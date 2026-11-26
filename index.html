@@ -721,14 +721,14 @@ document.addEventListener('touchend',function(ev){var n=Date.now();if(n-lastTap<
   var R=function(a,b){return a+Math.random()*(b-a);};
   var shuf=function(a){return a.slice().sort(function(){return Math.random()-.5;});};
   var bg=document.createElement('div'); bg.className='bgl';
-  var L=shuf(['cewe.png?v=2','foto/2.png','foto/3.png','foto/4.png','foto/6.jpg','foto/7.jpg','foto/8.jpg']);
-  var step=84/L.length;
+  var POOL=shuf(['cewe.png?v=2','foto/2.png','foto/3.png','foto/4.png','foto/6.jpg','foto/7.jpg','foto/8.jpg'].concat(["foto/wa/w1.jpg", "foto/wa/w10.jpg", "foto/wa/w11.jpg", "foto/wa/w12.jpg", "foto/wa/w13.jpg", "foto/wa/w14.jpg", "foto/wa/w15.jpg", "foto/wa/w16.jpg", "foto/wa/w17.jpg", "foto/wa/w18.jpg", "foto/wa/w19.jpg", "foto/wa/w2.jpg", "foto/wa/w20.jpg", "foto/wa/w21.jpg", "foto/wa/w22.jpg", "foto/wa/w23.jpg", "foto/wa/w24.jpg", "foto/wa/w25.jpg", "foto/wa/w26.jpg", "foto/wa/w27.jpg", "foto/wa/w28.jpg", "foto/wa/w29.jpg", "foto/wa/w3.jpg", "foto/wa/w30.jpg", "foto/wa/w31.jpg", "foto/wa/w32.jpg", "foto/wa/w33.jpg", "foto/wa/w34.jpg", "foto/wa/w35.jpg", "foto/wa/w36.jpg", "foto/wa/w37.jpg", "foto/wa/w38.jpg", "foto/wa/w39.jpg", "foto/wa/w4.jpg", "foto/wa/w40.jpg", "foto/wa/w41.jpg", "foto/wa/w42.jpg", "foto/wa/w43.jpg", "foto/wa/w44.jpg", "foto/wa/w45.jpg", "foto/wa/w46.jpg", "foto/wa/w47.jpg", "foto/wa/w48.jpg", "foto/wa/w49.jpg", "foto/wa/w5.jpg", "foto/wa/w50.jpg", "foto/wa/w51.jpg", "foto/wa/w52.jpg", "foto/wa/w53.jpg", "foto/wa/w54.jpg", "foto/wa/w55.jpg", "foto/wa/w56.jpg", "foto/wa/w6.jpg", "foto/wa/w7.jpg", "foto/wa/w8.jpg", "foto/wa/w9.jpg"]));var NS=Math.min(POOL.length,20),qi=NS;var L=POOL.slice(0,NS);bg.addEventListener('animationiteration',function(e){var d=e.target;if(!d.classList||!d.classList.contains('ph'))return;d.firstChild.src=POOL[qi%POOL.length];qi++;d.style.left=R(2,90)+'%';d.style.width=R(7,11)+'cqw';d.style.setProperty('--sx',R(-3,3)+'cqw');d.style.setProperty('--r0',R(-9,9)+'deg');d.style.setProperty('--r1',R(-9,9)+'deg');});
+  var step=88/L.length;
   L.forEach(function(src,i){
     var d=document.createElement('div'); d.className='ph';
     var im=new Image(); im.className='fb'; im.alt=''; im.decoding='async'; im.src=src; d.appendChild(im);
     var dur=R(20,30);
     d.style.left=(3+i*step+R(-1.5,1.5))+'%';
-    d.style.width=R(15,21)+'cqw';
+    d.style.width=R(7,11)+'cqw';
     d.style.animationDuration=dur+'s';
     d.style.animationDelay=(-R(0,dur))+'s';
     d.style.setProperty('--dy','-150cqw');
