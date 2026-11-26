@@ -58,56 +58,30 @@
     font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.5}
   .rotate{display:none!important}
   .next{display:none!important}
-  #p2{position:fixed;inset:0;z-index:50;container-type:size;overflow:hidden;opacity:0;pointer-events:none;transition:opacity 1.4s ease;
-    background:radial-gradient(ellipse at 28% 42%,#6b1c28 0%,#4a1318 52%,#2c090d 100%)}
+  #p2{position:absolute;inset:0;z-index:5;display:flex;align-items:center;padding:0 5cqw;
+    opacity:0;pointer-events:none;transition:opacity 1.4s ease}
   #p2.on{opacity:1}
-  #p2::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(0,0,0,.4) 100%)}
-  #p2::after{content:'\1F339';position:absolute;right:1.5cqw;bottom:-1cqh;font-size:16cqh;opacity:.16;transform:rotate(-18deg);z-index:-1;filter:saturate(.7)}
-  #p2 .wrap{--u:min(1cqw,1.6cqh);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    width:calc(var(--u)*100);height:calc(var(--u)*62);display:flex;align-items:center;padding:0 calc(var(--u)*4)}
-  #p2 .foto{position:relative;flex:0 0 auto;width:calc(var(--u)*38);aspect-ratio:3/4;
-    border-radius:calc(var(--u)*19) calc(var(--u)*19) calc(var(--u)*2.5) calc(var(--u)*2.5);
-    box-shadow:0 0 calc(var(--u)*9) rgba(232,201,160,.2),0 calc(var(--u)*2) calc(var(--u)*6) rgba(0,0,0,.45);
-    opacity:0;transform:translateX(calc(var(--u)*-6)) scale(.94);
+  #p2 .foto{flex:0 0 auto;height:58cqw;aspect-ratio:3/4;border-radius:3cqw;overflow:hidden;
+    border:.5cqw solid rgba(255,255,255,.85);box-shadow:0 2cqw 6cqw rgba(104,26,44,.28),0 0 8cqw rgba(255,255,255,.55),0 0 0 1.4cqw rgba(255,255,255,.35),0 0 0 2.6cqw rgba(255,255,255,.18);
+    opacity:0;transform:translateX(-6cqw) scale(.94);
     transition:transform 1.6s cubic-bezier(.2,.8,.2,1) .3s,opacity 1.4s ease .3s}
   #p2.on .foto{opacity:1;transform:none}
-  #p2 .foto::before{content:'';position:absolute;inset:calc(var(--u)*-1.7);border:1px solid rgba(232,201,160,.9);
-    border-radius:calc(var(--u)*20.7) calc(var(--u)*20.7) calc(var(--u)*4.2) calc(var(--u)*4.2)}
-  #p2 .foto::after{content:'';position:absolute;inset:calc(var(--u)*-3.5);border:1px dotted rgba(232,201,160,.5);
-    border-radius:calc(var(--u)*22.5) calc(var(--u)*22.5) calc(var(--u)*6) calc(var(--u)*6)}
-  #p2 .pic{position:absolute;inset:0;overflow:hidden;border-radius:inherit;border:calc(var(--u)*.7) solid #f3e3d0;
-    box-shadow:inset 0 0 calc(var(--u)*3) rgba(44,9,13,.55)}
-  #p2 .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
-  #p2 .sp{position:absolute;font-style:normal;color:#e8c9a0;font-size:calc(var(--u)*3);line-height:1;
-    text-shadow:0 0 calc(var(--u)*1.5) rgba(232,201,160,.8);animation:tw 3.2s ease-in-out infinite}
-  #p2 .s1{top:calc(var(--u)*-5.2);left:calc(50% - var(--u)*1.5)}
-  #p2 .s2{bottom:calc(var(--u)*-4.6);left:calc(var(--u)*-4.2);animation-delay:1s}
-  #p2 .s3{right:calc(var(--u)*-5);top:34%;animation-delay:2s;font-size:calc(var(--u)*2.2)}
-  #p2 .s4{bottom:calc(var(--u)*-4.6);right:calc(var(--u)*-4.2);animation-delay:.5s;font-size:calc(var(--u)*2.2)}
-  @keyframes tw{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
-  #p2 .teks{flex:1 1 0;min-width:0;margin-left:calc(var(--u)*5);display:flex;flex-direction:column;color:#f3e3d0}
-  #p2 .judul{margin-bottom:calc(var(--u)*2.4);line-height:1;color:#f6e8d8;text-shadow:0 0 calc(var(--u)*2) rgba(232,201,160,.25);
-    opacity:0;transition:opacity 1.2s ease .8s}
-  #p2 .t1{font-family:'Playfair Display',Georgia,serif;font-size:calc(var(--u)*3.4);margin-left:calc(var(--u)*11)}
-  #p2 .t2{font-family:'Pinyon Script','Great Vibes',cursive;font-size:calc(var(--u)*8.6);line-height:.85;margin:calc(var(--u)*-.2) 0 calc(var(--u)*-1.2)}
-  #p2 .t3{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:calc(var(--u)*4.2);margin-left:calc(var(--u)*17)}
-  #p2 .isi{font-family:'Lora',Georgia,serif;font-weight:500;font-size:calc(var(--u)*2);line-height:1.5;text-align:justify;color:#f3e3d0}
-  #p2 .isi p{margin-bottom:calc(var(--u)*.8)}
+  #p2 .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
+  #p2 .teks{flex:1 1 0;min-width:0;margin-left:4.5cqw;text-align:left;color:#4a1220}
+  #p2 .judul{font-family:'Dancing Script','Great Vibes',cursive;font-weight:700;font-size:6cqw;line-height:1.1;color:#7a1f35;text-shadow:0 .3cqw 1cqw rgba(255,255,255,.6);
+    margin-bottom:1.6cqw;opacity:0;transition:opacity 1.2s ease .8s}
+  #p2 .isi{font-family:'Lora',Georgia,serif;font-weight:500;color:#5a1a2b;
+    font-size:2.2cqw;line-height:1.55}
+  #p2 .isi p{margin-bottom:1.3cqw}
   #p2 .isi p:last-child{margin-bottom:0}
   #p2 .isi span{opacity:0;transition:opacity 1.2s ease}
   #p2.on .judul,#p2.on .isi span{opacity:1}
-  #p2 .fl{position:absolute;z-index:-1;bottom:-6cqw;opacity:0;pointer-events:none;color:#e8c9a0!important;animation:flo 9s linear infinite}
-  @keyframes flo{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.55}100%{transform:translateY(-110cqh) rotate(40deg);opacity:0}}
-  @media (orientation:portrait){
-    #p2 .wrap{--u:1cqw;width:100cqw;height:100cqh;flex-direction:column;justify-content:center;padding:0 calc(var(--u)*7)}
-    #p2 .teks{display:contents}
-    #p2 .judul{order:1;align-self:stretch;margin-bottom:calc(var(--u)*7)}
-    #p2 .foto{order:2;width:calc(var(--u)*34);margin-bottom:calc(var(--u)*7)}
-    #p2 .isi{order:3;font-size:calc(var(--u)*3.5)}
-    #p2 .t1{font-size:calc(var(--u)*5.4);margin-left:calc(var(--u)*14)}
-    #p2 .t2{font-size:calc(var(--u)*13)}
-    #p2 .t3{font-size:calc(var(--u)*6.6);margin-left:calc(var(--u)*24)}
-  }
+  #p2::before{content:'';position:absolute;inset:0;z-index:-1;
+    background:radial-gradient(circle at 22% 50%,rgba(255,255,255,.55),transparent 42%),
+    radial-gradient(circle at 88% 10%,rgba(255,214,224,.9),transparent 38%),
+    radial-gradient(circle at 78% 98%,rgba(238,160,184,.55),transparent 40%)}
+  #p2 .fl{position:absolute;z-index:-1;bottom:-6cqw;opacity:0;pointer-events:none;animation:flo 9s linear infinite}
+  @keyframes flo{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.75}100%{transform:translateY(-80cqw) rotate(40deg);opacity:0}}
 </style>
 </head>
 <body>
@@ -119,20 +93,14 @@
       <span>Next</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
-  </div>
-
-  <div id="p2">
-    <div class="wrap">
-      <div class="foto">
-        <div class="pic"><img src="cewe.jpg?v=1" alt=""></div>
-        <i class="sp s1">&#10022;</i><i class="sp s2">&#10022;</i><i class="sp s3">&#10023;</i><i class="sp s4">&#10023;</i>
-      </div>
+    <div id="p2">
+      <div class="foto"><img src="cewe.png?v=2" alt=""></div>
       <div class="teks">
-        <div class="judul"><div class="t1">this is a</div><div class="t2">Greeting</div><div class="t3">For you</div></div>
+        <div class="judul">Happy Birthday</div>
         <div class="isi">
-          <p><span>Happy Birthdayy!! Hari ini adalah hariii yang paling spesial, karena ada seseorang yang sedang merayakan hari bertambah usianya,</span> <span>Mungkin ulang tahun hanya datang sekali setahun, tapi bagiku, ini adalah momen yang tepat untuk merayakan kehadiran kamu.</span></p>
-          <p><span>Jadi, kali ini aku mau kasih kamu sesuatu.</span> <span>Sebuah kejutan kecil yang aku susun khusus buat kamu, lengkap dengan hal-hal yang ingin aku sampaikan.</span></p>
-          <p><span>So, take your time and enjoy this little surprise.</span> <span>Semoga kamu suka, ya!</span></p>
+          <p><span>Selamat ulang tahun yang ke 19 sayanggg,</span> <span>aku bersyukur punya kamu di hidup aku,</span> <span>semoga di umur yang baru ini kamu selalu sehat, dilindungi Allah, dan hatinya makin tenang.</span> <span>Apa yang kamu impikan semoga dimudahkan satu per satu yaawww&#10084;&#65039;&#10084;&#65039;&#10084;&#65039;</span></p>
+          <p><span>Jadi kali ini aku mau kasih kamu sesuatu.</span> <span>Sebuah kejutan kecil yang aku susun khusus buat kamu, lengkap dengan hal2 yang ingin aku sampaikan.</span></p>
+          <p><span>Semoga kamu suka ya sayangg!</span></p>
         </div>
       </div>
     </div>
