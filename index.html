@@ -309,7 +309,7 @@ function build(){
   var ln=lineTex(nm.inkW-.8,.3);
   var cat=IMG.cat?imgTex(IMG.cat,17,true):null;
   var let_=IMG.letter?imgTex(IMG.letter,17.4,false):null;
-  var me=IMG.me?imgTex(IMG.me,15,false):null;
+  var me=IMG.me?imgTex(IMG.me,17.5,false):null;
   var catW=cat?cat.w:0, letW=let_?let_.w:0, meW=me?me.w+.6:0;
 
   // susunan (satuan: lebar layar / 100), titik awal kiri-atas
@@ -443,7 +443,7 @@ var fontsP=(document.fonts&&document.fonts.load)?Promise.all([
 ]):Promise.resolve();
 Promise.all([
   Promise.race([fontsP,new Promise(function(r){setTimeout(r,3000);})]),
-  loadImg('kucing.png?v=10'),loadImg('surat.png?v=10'),loadImg('saya.png?v=5')
+  loadImg('kucing.png?v=10'),loadImg('surat.png?v=10'),loadImg('saya.png?v=6')
 ]).then(function(r){IMG.cat=r[1];IMG.letter=r[2];IMG.me=r[3];build();});
 
 /* ================= TOMBOL NEXT ================= */
