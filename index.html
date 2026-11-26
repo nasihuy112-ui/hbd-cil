@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Happy Birthday Vika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;background:#f1eeea;color:#3a0d12}
+  body{display:flex;align-items:center;justify-content:center;overflow:hidden;
+    padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+
+  .next{position:fixed;top:calc(14px + env(safe-area-inset-top));right:14px;z-index:5;
+    background:#3a0d12;color:#f1eeea;border:0;border-radius:999px;padding:8px 20px;
+    font-family:'Playfair Display',Georgia,serif;font-size:15px;cursor:pointer}
+
+  /* semua ukuran mengikuti lebar wrapper ini (cqw), jadi sama di semua HP */
+  .wrap{width:min(92vw,460px);container-type:inline-size;
+    display:flex;flex-direction:column;align-items:center;gap:5cqw}
+
+  .row{display:flex;align-items:flex-end;justify-content:center;width:100%}
+  .title{font-family:'Playfair Display',Georgia,serif;line-height:1;white-space:nowrap}
+  .sc{font-family:'Great Vibes',cursive;font-size:1.5em;line-height:.8}
+
+  .happy{font-size:17cqw}
+  .bday{font-size:16cqw;align-self:center}
+  .cat{height:30cqw;width:auto;margin-left:2cqw;margin-bottom:1cqw}
+
+  .row2{align-items:center;gap:4cqw;margin-top:2cqw}
+  .letter{width:30cqw;height:auto}
+  .name{font-family:'Special Elite',monospace;font-size:3.6cqw;letter-spacing:.4em;
+    white-space:nowrap}
+
+  .tag{font-family:'Special Elite',monospace;font-size:clamp(10px,2.9cqw,13px);
+    letter-spacing:.1em;text-align:center;opacity:.85;line-height:1.5;margin-top:4cqw}
+
+  .wrap>*{opacity:0;animation:in .9s ease forwards}
+  .r1{animation-delay:.1s}.r2{animation-delay:.5s}.row2{animation-delay:.9s}.tag{animation-delay:1.3s}
+  @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* minta layar tegak */
+  .rotate{display:none;position:fixed;inset:0;z-index:99;background:#f1eeea;
+    align-items:center;justify-content:center;text-align:center;padding:24px;
+    font-family:'Playfair Display',Georgia,serif;font-size:18px}
+  @media (orientation:landscape) and (max-height:600px){.rotate{display:flex}}
+</style>
+</head>
+<body>
+  <button class="next" id="next">Next</button>
+
+  <div class="wrap">
+    <div class="row r1">
+      <div class="title happy"><span class="sc">H</span>appy</div>
+      <img class="cat" src="kucing.png" alt="">
+    </div>
+
+    <div class="title bday r2"><span class="sc">B</span>irthday</div>
+
+    <div class="row row2">
+      <img class="letter" src="surat.png" alt="">
+      <div class="name">Vika Arianti</div>
+    </div>
+
+    <p class="tag">"A little digital memory book<br>built with love, just for you."</p>
+  </div>
+
+  <div class="rotate">Putar HP ke posisi tegak ya</div>
+
+<script>
+  try{ screen.orientation && screen.orientation.lock && screen.orientation.lock('portrait').catch(function(){}); }catch(e){}
+  document.getElementById('next').addEventListener('click', function () {
+    // window.location.href = 'next.html';
+  });
+</script>
+</body>
+</html>
