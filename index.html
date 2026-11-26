@@ -2,45 +2,51 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Happy Birthday Vika</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{height:100%;background:#f1eeea;color:#3a0d12;overflow:hidden}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;
+    -webkit-text-size-adjust:none;text-size-adjust:none}
+  html,body{height:100%;background:#f1eeea;color:#3a0d12;overflow:hidden;
+    touch-action:manipulation}
   body{display:flex;align-items:center;justify-content:center}
 
-  /* kanvas 9:16, semua ukuran dihitung dari lebarnya (cqw) */
+  /* kanvas 9:16, semua ukuran dihitung dari lebarnya */
   .stage{
     position:relative;
     width:min(100vw,calc(100dvh*9/16));
     height:min(100dvh,calc(100vw*16/9));
     container-type:inline-size;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:2cqw;padding:0 4cqw;overflow:hidden
+    display:flex;align-items:center;justify-content:center;overflow:hidden
   }
 
-  .next{position:absolute;top:4cqw;right:4cqw;z-index:5;background:#3a0d12;color:#f1eeea;
-    border:0;border-radius:999px;padding:2cqw 5cqw;font-family:'Playfair Display',Georgia,serif;
-    font-size:4cqw;cursor:pointer}
+  .next{position:absolute;top:calc(5cqw + env(safe-area-inset-top));right:5cqw;z-index:5;
+    background:#3a0d12;color:#f1eeea;border:0;border-radius:999px;padding:1.8cqw 4.6cqw;
+    font-family:'Playfair Display',Georgia,serif;font-size:3.8cqw;cursor:pointer}
+
+  .content{width:max-content;transform-origin:center;
+    display:flex;flex-direction:column;align-items:flex-start;gap:0}
 
   .title{font-family:'Playfair Display',Georgia,serif;line-height:1;white-space:nowrap}
   .sc{font-family:'Great Vibes',cursive;font-size:1.5em;line-height:.8}
 
-  .row1{display:flex;align-items:flex-end;justify-content:center;gap:1cqw}
-  .happy{font-size:23cqw}
-  .cat{height:44cqw;width:auto;margin-bottom:1cqw}
-  .bday{font-size:23cqw;margin-top:-6cqw}
+  .row1{display:flex;align-items:flex-end;gap:2cqw}
+  .happy{font-size:16cqw}
+  .cat{height:32cqw;width:auto;margin-bottom:1cqw}
 
-  .row2{display:flex;align-items:center;justify-content:center;gap:3cqw;margin-top:2cqw}
-  .letter{width:42cqw;height:auto}
-  .name{font-family:'Special Elite',monospace;font-size:3.7cqw;letter-spacing:.2em;white-space:nowrap}
+  .bday{font-size:16cqw;margin-top:-4cqw;margin-left:12cqw}
 
-  .tag{font-family:'Special Elite',monospace;font-size:3.8cqw;letter-spacing:.06em;
-    text-align:center;line-height:1.6;opacity:.85;margin-top:3cqw}
+  .row2{display:flex;align-items:center;gap:4cqw;margin-top:3cqw}
+  .letter{width:30cqw;height:auto}
+  .name{font-family:'Special Elite',monospace;font-size:3.4cqw;letter-spacing:.25em;
+    white-space:nowrap}
 
-  .stage>*{opacity:0;animation:in .9s ease forwards}
+  .tag{align-self:center;font-family:'Special Elite',monospace;font-size:3.2cqw;
+    letter-spacing:.06em;text-align:center;line-height:1.7;opacity:.85;margin-top:7cqw}
+
+  .content>*{opacity:0;animation:in .9s ease forwards}
   .row1{animation-delay:.1s}.bday{animation-delay:.5s}.row2{animation-delay:.9s}.tag{animation-delay:1.3s}
   @keyframes in{from{opacity:0;transform:translateY(2cqw)}to{opacity:1;transform:none}}
 
@@ -51,28 +57,43 @@
 </style>
 </head>
 <body>
-  <div class="stage">
+  <div class="stage" id="stage">
     <button class="next" id="next">Next</button>
 
-    <div class="row1">
-      <div class="title happy"><span class="sc">H</span>appy</div>
-      <img class="cat" src="kucing.png?v=3" alt="">
+    <div class="content" id="content">
+      <div class="row1">
+        <div class="title happy"><span class="sc">H</span>appy</div>
+        <img class="cat" src="kucing.png?v=4" alt="">
+      </div>
+
+      <div class="title bday"><span class="sc">B</span>irthday</div>
+
+      <div class="row2">
+        <img class="letter" src="surat.png?v=4" alt="">
+        <div class="name">Vika Arianti</div>
+      </div>
+
+      <p class="tag">"A little digital memory book<br>built with love, just for you."</p>
     </div>
-
-    <div class="title bday"><span class="sc">B</span>irthday</div>
-
-    <div class="row2">
-      <img class="letter" src="surat.png?v=3" alt="">
-      <div class="name">Vika Arianti</div>
-    </div>
-
-    <p class="tag">"A little digital memory book<br>built with love, just for you."</p>
   </div>
 
   <div class="rotate">Putar HP ke posisi tegak ya</div>
 
 <script>
   try{ screen.orientation && screen.orientation.lock && screen.orientation.lock('portrait').catch(function(){}); }catch(e){}
+
+  // pastikan isi selalu muat di layar, apa pun ukuran HP dan font-nya
+  var stage=document.getElementById('stage'), c=document.getElementById('content');
+  function fit(){
+    c.style.transform='none';
+    var s=Math.min(1,(stage.clientWidth*0.9)/c.scrollWidth,(stage.clientHeight*0.9)/c.scrollHeight);
+    c.style.transform='scale('+s+')';
+  }
+  window.addEventListener('load',fit);
+  window.addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit);}
+  Array.prototype.forEach.call(document.images,function(i){i.addEventListener('load',fit);});
+
   document.getElementById('next').addEventListener('click', function () {
     // window.location.href = 'next.html';
   });
