@@ -127,6 +127,23 @@
   #p2 .pg.on .w{animation:fx2in .5s ease var(--d,0s) forwards !important}
   #p2 .hint.on{animation:none !important}
   .fx3vig{background:radial-gradient(ellipse at 50% 45%,transparent 60%,rgba(100,12,48,.3) 100%) !important}
+/*FX5*/
+  #p2 img:not(.fb){display:none !important}
+  #p2 .bgl{position:absolute;inset:0;overflow:hidden;border-radius:inherit;z-index:0;pointer-events:none}
+  #p2 .bgl .ph,#p2 .bgl .tx{position:absolute;bottom:-40cqw;will-change:transform;animation:fx5rise linear infinite;animation-play-state:paused;filter:blur(.7cqw);opacity:.82;transition:filter 2.4s ease,opacity 2.4s ease}
+  #p2.on .bgl .ph,#p2.on .bgl .tx{animation-play-state:running}
+  #p2 .bgl .ph{padding:.55cqw;background:#fff;border-radius:1.2cqw;box-shadow:0 1cqw 2.4cqw rgba(120,20,60,.35)}
+  #p2 .bgl .ph img{display:block;width:100%;height:auto;border-radius:.8cqw}
+  #p2 .bgl .tx{bottom:-6cqw;white-space:nowrap;font-family:'Dancing Script','Lora',Georgia,serif;font-style:italic;color:#fff;text-shadow:0 0 .8cqw rgba(214,60,110,.95),0 0 1.8cqw rgba(214,60,110,.6);filter:blur(.15cqw);opacity:.9}
+  #p2 .bgl.clear .ph{filter:blur(0);opacity:1}
+  #p2 .bgl.clear .tx{filter:blur(0);opacity:1}
+  @keyframes fx5rise{from{transform:translate3d(0,0,0) rotate(var(--r0,0deg))}to{transform:translate3d(var(--sx,0),var(--dy,-150cqw),0) rotate(var(--r1,0deg))}}
+  #p2 .fx5vig{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 50% 48%,transparent 58%,rgba(100,12,48,.32) 100%)}
+  #p2 .ctr{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3cqw;pointer-events:none}
+  #p2 .ctr .orn{color:#c2406b;font-size:2.4cqw;letter-spacing:.9cqw;margin-bottom:1.2cqw;text-shadow:0 0 .8cqw rgba(255,255,255,.9)}
+  #p2 .ctr .isi{width:78cqw;max-width:90%;font-size:2.8cqw !important;line-height:1.65 !important;padding:2.4cqw 3.2cqw !important;border-radius:2.4cqw !important;border:.2cqw solid rgba(255,255,255,.9) !important;background:rgba(255,246,249,.66) !important;box-shadow:0 1cqw 3cqw rgba(140,30,70,.28),inset 0 0 1.6cqw rgba(255,255,255,.7) !important;color:#6b1a30;transition:background 2s ease}
+  #p2 .ctr.fin .isi{background:rgba(255,246,249,.5) !important}
+  #p2 .ctr .dots{justify-content:center}
 </style>
 </head>
 <body>
@@ -656,30 +673,64 @@ document.addEventListener('touchend',function(ev){var n=Date.now();if(n-lastTap<
   });
 })();
 </script>
+
 <script>
 (function(){
   var p=document.getElementById('p2'); if(!p)return;
-  var v=document.createElement('div'); v.className='fx3vig'; p.appendChild(v);
-  var im=p.querySelector('img')||document.querySelector('img[src*="cewe"]'); if(!im)return;
-  var L=[im.getAttribute('src'),'foto/2.png','foto/3.png','foto/4.png','foto/6.jpg','foto/7.jpg','foto/8.jpg'];
-  L.slice(1).forEach(function(s){new Image().src=s;});
-  var bag=[],cur=0;
-  function nxt(){
-    if(!bag.length){bag=L.map(function(_,i){return i;}).sort(function(){return Math.random()-.5;});
-      if(bag[bag.length-1]===cur&&bag.length>1)bag.unshift(bag.pop());}
-    return bag.pop();
-  }
-  function sw(){
-    if(!p.classList.contains('on')||document.hidden)return;
-    var n=nxt(); if(n===cur)return; cur=n;
-    im.classList.add('sw');
-    setTimeout(function(){
-      im.onload=function(){im.classList.remove('sw');};
-      im.src=L[n];
-      setTimeout(function(){im.classList.remove('sw');},1500);
-    },700);
-  }
-  setInterval(sw,5000);
+  var isi=p.querySelector('.isi'); if(!isi)return;
+  var pgs=p.querySelectorAll('.pg');
+  var dots=p.querySelector('.dots'), hint=p.querySelector('.hint');
+  var R=function(a,b){return a+Math.random()*(b-a);};
+  var shuf=function(a){return a.slice().sort(function(){return Math.random()-.5;});};
+  var bg=document.createElement('div'); bg.className='bgl';
+  var L=shuf(['cewe.png?v=2','foto/2.png','foto/3.png','foto/4.png','foto/6.jpg','foto/7.jpg','foto/8.jpg']);
+  var step=84/L.length;
+  L.forEach(function(src,i){
+    var d=document.createElement('div'); d.className='ph';
+    var im=new Image(); im.className='fb'; im.alt=''; im.decoding='async'; im.src=src; d.appendChild(im);
+    var dur=R(20,30);
+    d.style.left=(3+i*step+R(-1.5,1.5))+'%';
+    d.style.width=R(15,21)+'cqw';
+    d.style.animationDuration=dur+'s';
+    d.style.animationDelay=(-R(0,dur))+'s';
+    d.style.setProperty('--dy','-150cqw');
+    d.style.setProperty('--sx',R(-3,3)+'cqw');
+    d.style.setProperty('--r0',R(-9,9)+'deg');
+    d.style.setProperty('--r1',R(-9,9)+'deg');
+    bg.appendChild(d);
+  });
+  var T=['Stay With Me','Forever Yours','My Love','Always You','You Are My Home','Be Mine','Only You','Miss You','Together Soon','Love You','My Everything'];
+  shuf(T).forEach(function(t,i){
+    var s=document.createElement('span'); s.className='tx'; s.textContent=t;
+    var dur=R(15,24);
+    s.style.left=(3+i*(80/T.length)+R(-2,2))+'%';
+    s.style.fontSize=R(2.2,3.6)+'cqw';
+    s.style.animationDuration=dur+'s';
+    s.style.animationDelay=(-R(0,dur))+'s';
+    s.style.setProperty('--dy','-100cqw');
+    s.style.setProperty('--sx',R(-2,2)+'cqw');
+    s.style.setProperty('--r0','0deg'); s.style.setProperty('--r1','0deg');
+    bg.appendChild(s);
+  });
+  p.insertBefore(bg,p.firstChild);
+  var vg=document.createElement('div'); vg.className='fx5vig'; p.insertBefore(vg,bg.nextSibling);
+  /* teks di tengah */
+  var ctr=document.createElement('div'); ctr.className='ctr';
+  var orn=document.createElement('div'); orn.className='orn'; orn.textContent='\u2726 \u2665 \u2726';
+  ctr.appendChild(orn); ctr.appendChild(isi);
+  if(dots)ctr.appendChild(dots);
+  if(hint)ctr.appendChild(hint);
+  p.appendChild(ctr);
+  /* setelah teks habis: background jernih */
+  var last=pgs[pgs.length-1], tm;
+  new MutationObserver(function(){
+    clearTimeout(tm);
+    if(last.classList.contains('on')){
+      tm=setTimeout(function(){bg.classList.add('clear');ctr.classList.add('fin');},2600);
+    }else{
+      bg.classList.remove('clear');ctr.classList.remove('fin');
+    }
+  }).observe(last,{attributes:true,attributeFilter:['class']});
 })();
 </script>
 </body>
