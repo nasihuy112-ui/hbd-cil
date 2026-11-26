@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Surat untuk Vika</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500;1,600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-text-size-adjust:none}
-html,body{height:100%;overflow:hidden;background:#f8e9ec;font-family:'Playfair Display',Georgia,serif}
+html,body{height:100%;overflow:hidden;background:#f3ebe6;font-family:'Cormorant Garamond',Georgia,serif}
 #bg,#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
 #bg{z-index:0}
 #fx{z-index:6}
@@ -19,64 +19,64 @@ html,body{height:100%;overflow:hidden;background:#f8e9ec;font-family:'Playfair D
 #env{position:relative;width:min(58vw,92vh);aspect-ratio:1.6;margin-top:12vh;cursor:pointer;transform-style:preserve-3d;animation:masuk 1.6s cubic-bezier(.2,.9,.25,1.2) both}
 #melayang{position:absolute;inset:0;animation:layang 4s ease-in-out infinite;transform-style:preserve-3d}
 .lapis{position:absolute;inset:0}
-#belakang{background:#e59db0;border-radius:10px;box-shadow:0 22px 50px rgba(150,60,90,.28),0 0 80px 20px rgba(255,255,255,.85)}
-#kertas{position:absolute;left:6%;right:6%;top:8%;height:84%;background:#fffaf3;border-radius:6px;z-index:2;display:flex;align-items:center;justify-content:center;color:#6b1a2c;font:400 8vh 'Great Vibes',cursive;transition:transform 1s cubic-bezier(.3,.8,.2,1)}
+#belakang{background:#cfa99a;border-radius:10px;box-shadow:0 24px 50px rgba(80,30,40,.25),0 0 90px 24px rgba(255,255,255,.8)}
+#kertas{position:absolute;left:6%;right:6%;top:8%;height:84%;background:#fffdf8;border-radius:4px;z-index:2;display:flex;align-items:center;justify-content:center;color:#6b1a2c;font:italic 600 8vh 'Cormorant Garamond',Georgia,serif;transition:transform 1s cubic-bezier(.3,.8,.2,1)}
 #depan{z-index:3;border-radius:10px;overflow:hidden}
 #depan i{position:absolute;inset:0}
-#depan i:nth-child(1){background:#fbd9e1;clip-path:polygon(0 0,50% 56%,0 100%)}
-#depan i:nth-child(2){background:#f9d1db;clip-path:polygon(100% 0,50% 56%,100% 100%)}
-#depan i:nth-child(3){background:linear-gradient(#ffeaef,#f6c3d0);clip-path:polygon(0 100%,50% 46%,100% 100%)}
+#depan i:nth-child(1){background:#f3e6da;clip-path:polygon(0 0,50% 56%,0 100%)}
+#depan i:nth-child(2){background:#eddcce;clip-path:polygon(100% 0,50% 56%,100% 100%)}
+#depan i:nth-child(3){background:linear-gradient(#f8efe6,#e4cdbd);clip-path:polygon(0 100%,50% 46%,100% 100%)}
 #tutup{position:absolute;left:0;right:0;top:0;height:60%;z-index:4;transform-origin:50% 0;transition:transform .8s ease-in-out}
-#tutup i{position:absolute;inset:0;background:linear-gradient(#f3b9c8,#ffe3e9);clip-path:polygon(0 0,100% 0,50% 100%)}
-#segel{position:absolute;left:50%;top:60%;width:18%;aspect-ratio:1;z-index:5;transform:translate(-50%,-50%);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#ffd9c9;font-size:6vh;background:radial-gradient(circle at 35% 30%,#b3354c,#6b1020 70%);box-shadow:0 4px 12px rgba(0,0,0,.4),inset 0 0 0 4px rgba(255,255,255,.12);animation:detak 1.3s ease-in-out infinite;transition:opacity .5s}
+#tutup i{position:absolute;inset:0;background:linear-gradient(#e6d0c0,#f7ede3);clip-path:polygon(0 0,100% 0,50% 100%)}
+#segel{position:absolute;left:50%;top:60%;width:18%;aspect-ratio:1;z-index:5;transform:translate(-50%,-50%);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#f1d3c2;font:italic 600 7vh 'Cormorant Garamond',Georgia,serif;background:radial-gradient(circle at 35% 30%,#8e2a40,#4a0c18 70%);box-shadow:0 4px 12px rgba(0,0,0,.4),inset 0 0 0 4px rgba(255,255,255,.12);animation:detak 1.3s ease-in-out infinite;transition:opacity .5s}
 .buka #segel{opacity:0;animation:none}
 .buka #tutup{transform:rotateX(180deg)}
 .buka.lewat #tutup{z-index:1}
 .keluar #kertas{transform:translateY(-62%)}
-#petunjuk{position:absolute;bottom:3vh;width:100%;text-align:center;color:#8a2a44;font-size:4.2vh;letter-spacing:.05em;animation:kedip 1.8s ease-in-out infinite}
+#petunjuk{position:absolute;bottom:3vh;width:100%;text-align:center;color:#7a3045;font:italic 600 4.4vh 'Cormorant Garamond',Georgia,serif;letter-spacing:.14em;animation:kedip 1.8s ease-in-out infinite}
 
 /* kucing */
 #kucing{position:fixed;z-index:4;left:1vw;bottom:-3vh;height:48vh;pointer-events:none;transform:translateY(110%);transition:transform .9s cubic-bezier(.2,.9,.25,1.3)}
 #kucing.ada{transform:none}
 #kucing img,#kucing canvas{display:block;height:100%;width:auto}
-#balon{position:fixed;z-index:5;left:2vw;bottom:47vh;max-width:30vw;padding:2.4vh 3vh;background:#fffaf6;color:#5a1422;border:2px solid #6b1a2c;border-radius:50% / 45%;text-align:center;font-weight:700;font-size:3.8vh;line-height:1.25;opacity:0;transform:scale(.2);transform-origin:20% 100%;transition:.45s cubic-bezier(.2,.9,.25,1.5)}
+#balon{position:fixed;z-index:5;left:2vw;bottom:47vh;max-width:30vw;padding:2.4vh 3vh;background:#fffaf6;color:#5a1422;border:1.5px solid #8a5a4a;border-radius:50% / 45%;text-align:center;font:italic 700 4.4vh 'Cormorant Garamond',Georgia,serif;line-height:1.25;opacity:0;transform:scale(.2);transform-origin:20% 100%;transition:.45s cubic-bezier(.2,.9,.25,1.5)}
 #balon.ada{opacity:1;transform:none}
 
 /* surat */
 #surat{position:fixed;z-index:3;left:50%;top:5vh;bottom:5vh;width:min(68vw,165vh);transform:translate3d(-50%,112vh,0);transition:transform 1.2s cubic-bezier(.2,.8,.2,1);pointer-events:none}
 #surat.ada{transform:translate3d(-50%,0,0);pointer-events:auto}
 #bingkai{position:absolute;left:-6vh;top:-6vh;width:calc(100% + 12vh);height:calc(100% + 12vh);pointer-events:none}
-#surat.polos{background:#fff7f9;border:2px solid #efb3c2;border-radius:5vh}
+#surat.polos{background:#fffaf5;border:1.5px solid #c9a27e;border-radius:5vh}
 #gulung{position:absolute;inset:3.2vh 2.4vh;overflow-y:auto;overscroll-behavior:contain;padding:3vh 3vw 10vh;touch-action:pan-y;scrollbar-width:none}
 #gulung::-webkit-scrollbar{display:none}
-#isi{color:#5c1229;font:italic 500 5vh/1.75 'Lora',Georgia,serif;text-align:center;letter-spacing:.01em}
+#isi{color:#4a1220;font:italic 600 6vh/1.7 'Cormorant Garamond',Georgia,serif;text-align:center;letter-spacing:.01em}
 #isi p{margin-bottom:2.6vh}
-#isi p::after{content:'\2661';display:block;margin-top:2.6vh;color:#d9829a;font-style:normal;font-size:4vh;opacity:.75}
+#isi p::after{content:'';display:block;width:9vh;height:1px;margin:3vh auto 0;background:linear-gradient(90deg,transparent,#b98d6c,transparent)}
 #isi p:last-child::after{display:none}
 .baris{display:block;text-wrap:balance}
 #judul{display:block;width:100%;height:auto;margin:0 0 3vh}
 .h{display:inline-block;opacity:0;transform:translate3d(0,1.4vh,0);transition:opacity .55s ease-out,transform .55s ease-out}
 .h.on{opacity:1;transform:none}
-#lanjut{display:block;margin:3vh auto 0;padding:2.2vh 6vh;border:0;border-radius:99px;background:linear-gradient(135deg,#7d1f35,#3a0d12);color:#fff3ee;font:600 4.2vh 'Playfair Display',Georgia,serif;box-shadow:0 6px 24px rgba(168,84,106,.6);opacity:0;visibility:hidden;transform:scale(.6);transition:.6s cubic-bezier(.2,.9,.25,1.5)}
+#lanjut{display:block;margin:3vh auto 0;padding:2.2vh 6vh;border:0;border-radius:4px;background:#5a1424;color:#f6e6dc;letter-spacing:.1em;font:italic 700 4.8vh 'Cormorant Garamond',Georgia,serif;box-shadow:0 8px 22px rgba(60,15,25,.3);opacity:0;visibility:hidden;transform:scale(.6);transition:.6s cubic-bezier(.2,.9,.25,1.5)}
 #lanjut.ada{opacity:1;visibility:visible;transform:none}
 
-#kilat{position:fixed;inset:0;z-index:7;pointer-events:none;opacity:0;background:radial-gradient(circle,#fff,#ffd3dc 45%,transparent 75%)}
+#kilat{position:fixed;inset:0;z-index:7;pointer-events:none;opacity:0;background:radial-gradient(circle,#fff,#f4e2d6 45%,transparent 75%)}
 @media (orientation:portrait){
 #env{width:78vw;margin-top:0}
-#kertas{font-size:9vw}
-#segel{font-size:7vw}
-#petunjuk{bottom:auto;top:calc(50% + 31vw);font-size:4.4vw}
+#kertas{font-size:10vw}
+#segel{font-size:8vw}
+#petunjuk{bottom:auto;top:calc(50% + 31vw);font-size:4.8vw}
 #kucing{height:34vw;left:2vw;bottom:-1vw}
-#balon{left:4vw;bottom:36vw;max-width:70vw;font-size:4vw;padding:3vw 4vw}
+#balon{left:4vw;bottom:36vw;max-width:70vw;font-size:4.8vw;padding:3vw 4vw}
 #surat{width:90vw;top:4vh;bottom:37vw}
 #bingkai{left:-6vw;top:-6vw;width:calc(100% + 12vw);height:calc(100% + 12vw)}
 #surat.polos{border-radius:6vw}
 #gulung{inset:3.2vw 2.4vw;padding:5vw 2.5vw 14vw}
-#isi{font-size:4.1vw}
+#isi{font-size:5vw}
 #isi p{margin-bottom:4vw}
-#isi p::after{margin-top:3vw;font-size:4.5vw}
+#isi p::after{margin-top:4vw;width:18vw}
 #judul{margin-bottom:5vw}
-#lanjut{margin-top:5vw;padding:3vw 9vw;font-size:4.4vw}
+#lanjut{margin-top:5vw;padding:3vw 9vw;font-size:5.2vw}
 }
 @keyframes masuk{from{opacity:0;transform:translateY(-70vh) rotateY(360deg) scale(.2)}to{opacity:1;transform:none}}
 @keyframes layang{50%{transform:translateY(-2.5vh) rotateX(6deg) rotateY(-7deg)}}
@@ -93,9 +93,9 @@ html,body{height:100%;overflow:hidden;background:#f8e9ec;font-family:'Playfair D
     <div id="kertas">for Vika</div>
     <div class="lapis" id="depan"><i></i><i></i><i></i></div>
     <div id="tutup"><i></i></div>
-    <div id="segel">&#9829;&#xFE0E;</div>
+    <div id="segel">V</div>
   </div></div>
-  <div id="petunjuk">tap segelnya ya</div>
+  <div id="petunjuk">ketuk segelnya</div>
 </div>
 
 <div id="kucing"></div>
@@ -103,7 +103,7 @@ html,body{height:100%;overflow:hidden;background:#f8e9ec;font-family:'Playfair D
 
 <div id="surat"><canvas id="bingkai"></canvas><div id="gulung">
   <div id="isi"></div>
-  <button id="lanjut">Lanjut &#10140;</button>
+  <button id="lanjut">Lanjut &rarr;</button>
 </div></div>
 
 <canvas id="fx"></canvas>
@@ -143,14 +143,14 @@ var FS=[
 'void main(){vec2 uv=gl_FragCoord.xy/R;vec2 p=(gl_FragCoord.xy-.5*R)/min(R.x,R.y);float t=T*.06;',
 ' vec2 q=vec2(fbm(p*1.4+t),fbm(p*1.4+vec2(5.2,1.3)-t));',
 ' vec2 r=vec2(fbm(p*1.6+2.*q+vec2(1.7,9.2)+t*1.5),fbm(p*1.6+2.*q+vec2(8.3,2.8)-t));float f=fbm(p*1.2+2.5*r);',
-' vec3 col=mix(vec3(.975,.925,.925),vec3(.97,.775,.835),smoothstep(.2,.72,f));',
-' col=mix(col,vec3(.955,.88,.775),smoothstep(.5,.9,r.x)*.45);',
-' col=mix(col,vec3(.93,.64,.73),smoothstep(.5,1.,q.y*f*1.7)*.45);',
+' vec3 col=mix(vec3(.98,.955,.94),vec3(.93,.83,.82),smoothstep(.2,.72,f));',
+' col=mix(col,vec3(.96,.91,.82),smoothstep(.5,.9,r.x)*.5);',
+' col=mix(col,vec3(.82,.6,.62),smoothstep(.5,1.,q.y*f*1.7)*.3);',
 ' float w1=p.y+.18*sin(p.x*2.1+T*.35)+.12*(q.x-.5);float w2=p.y-.22*sin(p.x*1.6-T*.27)-.15*(r.y-.5);',
 ' col=mix(col,vec3(1.),exp(-pow((w1+.28)*9.,2.))*.4+exp(-pow((w2-.3)*11.,2.))*.35);',
 ' vec2 s=p-vec2(0.,.8);float a=atan(s.x,-s.y);float ray=noise(vec2(a*8.+T*.18,1.))*noise(vec2(a*15.-T*.13,4.));',
 ' col=mix(col,vec3(1.,.98,.95),ray*exp(-length(s)*.8)*.85);',
-' col=mix(col,vec3(.95,.57,.68),hati(p,4.2,.2,1.)*.42);col=mix(col,vec3(1.),hati(p,6.5,.27,9.)*.7);',
+' ',
 ' float d=length(p*vec2(.8,1.));col+=vec3(1.,.97,.95)*(.12+.04*sin(T*1.4))*exp(-d*d*2.2);',
 ' col+=vec3(1.,.93,.82)*(bokeh(p,5.,.05,0.)+bokeh(p,9.,.08,1.)+bokeh(p,14.,.12,2.));',
 ' vec2 g=p*18.+vec2(0.,-T*.25);vec2 id=floor(g),c=fract(g)-.5;float h=hash(id);',
@@ -183,13 +183,13 @@ function ukur(){
   fx.width=innerWidth;fx.height=innerHeight;
 }
 addEventListener('resize',ukur);ukur();
-var WARNA=['#e86f8d','#f4a3b7','#ffffff','#d9a07c'];
+var WARNA=['#b98d6c','#e8cdb8','#ffffff','#9a3a50'];
 function tambah(x,y,vx,vy,hati,umur){
-  bagian.push({x:x,y:y,vx:vx,vy:vy,hati:hati,umur:umur,u:0,r:4+Math.random()*7,a:Math.random()*6.3,w:WARNA[Math.random()*4|0]});
+  bagian.push({x:x,y:y,vx:vx,vy:vy,hati:hati,umur:umur,u:0,r:3+Math.random()*5,a:Math.random()*6.3,w:WARNA[Math.random()*4|0]});
 }
 function ledak(x,y,jml){
   for(var i=0;i<jml;i++){var a=Math.random()*6.283,v=2+Math.random()*9;
-    tambah(x,y,Math.cos(a)*v,Math.sin(a)*v-3,Math.random()<.6,90+Math.random()*80);}
+    tambah(x,y,Math.cos(a)*v,Math.sin(a)*v-3,false,90+Math.random()*80);}
 }
 function gambar(b){
   cx.save();cx.translate(b.x,b.y);cx.rotate(b.hati?Math.sin(b.a)*.4:b.a);
@@ -264,16 +264,16 @@ function shaderDi(kanvas,frag){
   'vec2 uv=gl_FragCoord.xy/R;float a=atan(p.y/R.y,p.x/R.x);'+
   'float isi=1.-smoothstep(-1.,1.,d);'+
   'float sutra=ns(uv*vec2(4.,3.)+vec2(T*.12,-T*.08)+ns(uv*3.-T*.05)*2.);'+
-  'vec3 dasar=mix(vec3(1.,.985,.985),vec3(1.,.915,.94),sutra*.8);'+
+  'vec3 dasar=mix(vec3(1.,.99,.975),vec3(.975,.93,.9),sutra*.8);'+
   'float pita=exp(-pow((uv.x+uv.y*.45-fract(T*.11)*2.4+.4)*6.,2.));dasar=mix(dasar,vec3(1.),pita*.7);'+
-  'dasar=mix(dasar,vec3(1.,.8,.87),exp(d/(U*5.))*.55);'+
-  'vec3 warna=mix(vec3(.95,.5,.66),vec3(.98,.82,.6),.5+.5*sin(a*3.+T*1.1));warna=mix(warna,vec3(1.),pow(.5+.5*sin(a*2.-T*1.7),8.));'+
-  'float garis=exp(-pow(d/(U*.45),2.));float dalam=exp(-pow((d+U*1.5)/(U*.16),2.))*.55;'+
+  'dasar=mix(dasar,vec3(.93,.8,.74),exp(d/(U*5.))*.4);'+
+  'vec3 warna=mix(vec3(.5,.15,.25),vec3(.86,.7,.5),.5+.5*sin(a*3.+T*1.1));warna=mix(warna,vec3(1.),pow(.5+.5*sin(a*2.-T*1.7),8.));'+
+  'float garis=exp(-pow(d/(U*.28),2.));float dalam=exp(-pow((d+U*1.5)/(U*.16),2.))*.55;'+
   'float jalan=pow(max(0.,cos(a-T*1.2)),40.)+pow(max(0.,cos(a-T*1.2+3.14159)),40.);'+
   'float pendar=exp(-max(d,0.)/(U*1.8))*(1.-isi)*(.55+.12*sin(T*2.)+jalan*.5);'+
   'vec3 c=dasar;float al=isi*.96;'+
   'c=mix(c,warna,clamp(garis+dalam,0.,1.));al=max(al,garis);'+
-  'if(isi<.5&&garis<.5){c=mix(vec3(1.,.72,.82),vec3(1.),jalan);al=max(garis,clamp(pendar,0.,.9));}'+
+  'if(isi<.5&&garis<.5){c=mix(vec3(1.,.86,.8),vec3(1.),jalan);al=max(garis,clamp(pendar,0.,.9));}'+
   'c+=vec3(1.,.96,.9)*jalan*exp(-pow(d/(U*1.1),2.))*.8;'+
   'float bintang=kilau(gl_FragCoord.xy/(U*5.),T)*exp(-abs(d)/(U*3.));c+=vec3(bintang);al=clamp(al+bintang,0.,1.);'+
   'gl_FragColor=vec4(clamp(c,0.,1.)*al,al);}');
@@ -290,8 +290,8 @@ var judulMulai=-1;
 function buatJudul(){
   var W=1200,H=290,t=document.createElement('canvas');t.width=W;t.height=H;
   var x=t.getContext('2d');x.fillStyle='#fff';x.textAlign='center';x.textBaseline='middle';
-  [['SELAMAT ULANG TAHUN',82],['SAYANGGG KUUU\u2764\uFE0F\u2764\uFE0F',212]].forEach(function(b){
-    var fs=96;do{x.font="700 "+fs+"px 'Playfair Display',Georgia,serif";fs-=2;}while(x.measureText(b[0]).width>W-70);
+  [['Selamat Ulang Tahun',92],['Sayangku',212]].forEach(function(b){
+    var fs=140;do{x.font="italic 700 "+fs+"px 'Cormorant Garamond',Georgia,serif";fs-=2;}while(x.measureText(b[0]).width>W-70);
     x.fillText(b[0],W/2,b[1]);
   });
   var k=document.createElement('canvas');k.id='judul';k.width=900;k.height=Math.round(900*H/W);
@@ -300,13 +300,13 @@ function buatJudul(){
   'void main(){vec2 uv=vec2(gl_FragCoord.x/R.x,1.-gl_FragCoord.y/R.y);vec4 s=texture2D(X,uv);float a=s.a;'+
   'float g=0.;for(int i=0;i<8;i++){float an=float(i)*.785398;g+=texture2D(X,uv+vec2(cos(an),sin(an)*4.1)*.0065).a;}g*=.125;'+
   'float m=clamp((P*2.3-(uv.x+step(.5,uv.y)))/.3,0.,1.);'+
-  'float fl=ns(vec2(uv.x*7.+T*.35,uv.y*3.));vec3 tinta=mix(vec3(.45,.05,.17),vec3(.82,.24,.43),smoothstep(.25,.85,fl));'+
+  'float fl=ns(vec2(uv.x*7.+T*.35,uv.y*3.));vec3 tinta=mix(vec3(.36,.06,.14),vec3(.7,.42,.38),smoothstep(.25,.85,fl));'+
   'float kil=exp(-pow((uv.x+uv.y*.2-(fract(T*.2)*1.9-.4))*9.,2.));tinta=mix(tinta,vec3(1.,.78,.66),kil*.85);'+
   'vec3 asli=s.rgb/max(a,.001);float emoji=step(.2,max(asli.r,max(asli.g,asli.b))-min(asli.r,min(asli.g,asli.b)));'+
   'vec3 warna=mix(tinta,asli,emoji);float halo=g*(1.-a)*(.6+.2*sin(T*2.));'+
-  'vec3 c=warna*a+vec3(1.,.55,.7)*halo;float al=a+halo;'+
+  'vec3 c=warna*a+vec3(.9,.65,.62)*halo*.6;float al=a+halo;'+
   'float bt=kilau(uv*vec2(26.,6.5),T)*smoothstep(0.,.3,g);c+=vec3(1.,.93,.85)*bt;al=clamp(al+bt,0.,1.);'+
-  'float tepi=m*(1.-m)*4.;c+=vec3(1.,.7,.8)*tepi*a*.6;'+
+  'float tepi=m*(1.-m)*4.;c+=vec3(1.,.85,.8)*tepi*a*.6;'+
   'gl_FragColor=vec4(c,al)*m;}');
   if(!sh){k.getContext&&(k=t,k.id='judul',x.globalCompositeOperation='source-atop',x.fillStyle='rgba(122,20,50,.9)',x.fillRect(0,0,W,H));return k;}
   sh.tekstur(t);
@@ -330,7 +330,7 @@ function buatJudul(){
     'float halo=clamp(g*.8+g2*.5,0.,1.)*(1.-a)*(.75+.2*sin(T*2.2));'+
     'float kil=exp(-pow((uv.x*.8+uv.y*.6-(fract(T*.17)*2.6-.6))*7.,2.));'+
     'float rim=clamp((a-g)*1.8,0.,1.)*a;'+
-    'vec3 c=s.rgb+vec3(1.,.9,.88)*(kil*.32+rim*.3)*a+vec3(1.,.6,.76)*halo;float al=a+halo;'+
+    'vec3 c=s.rgb+vec3(1.,.9,.88)*(kil*.32+rim*.3)*a+vec3(1.,.82,.76)*halo;float al=a+halo;'+
     'float bt=kilau(uv*vec2(7.,11.),T)*smoothstep(0.,.25,g2);c+=vec3(bt);al=clamp(al+bt,0.,1.);'+
     'gl_FragColor=vec4(min(c,vec3(al)),al);}');
     if(!sh){img.alt='';wadah.appendChild(img);return;}
@@ -349,7 +349,7 @@ function ngomong(teks){
   kucing.classList.add('ada');balon.textContent=teks;
   balon.classList.remove('ada');void balon.offsetWidth;balon.classList.add('ada');
 }
-tBalon=setTimeout(function(){ngomong('Ada surat dari cowo kamu nih 👀');},2200);
+tBalon=setTimeout(function(){ngomong('Ada surat untuk kamu, Vika.');},2200);
 
 /* ===== BUKA AMPLOP ===== */
 var sudah=false;
@@ -411,7 +411,7 @@ function ketik(){
     $('isi').appendChild(buatJudul());judulMulai=(performance.now()-mulai)/1000;
     setTimeout(paragraf,2700);
   };
-  var huruf=document.fonts&&document.fonts.load?document.fonts.load("700 96px 'Playfair Display'"):Promise.resolve();
+  var huruf=document.fonts&&document.fonts.load?document.fonts.load("italic 700 96px 'Cormorant Garamond'"):Promise.resolve();
   Promise.race([huruf,new Promise(function(r){setTimeout(r,1500);})]).then(mulaiJudul,mulaiJudul);
 }
 function selesai(){
@@ -423,7 +423,7 @@ function selesai(){
 $('lanjut').addEventListener('click',function(){
   meong();ledak(innerWidth/2,innerHeight*.7,60);
   if(NEXT_URL)setTimeout(function(){location.href=NEXT_URL;},900);
-  else this.textContent='Bentar ya, lanjutannya lagi dibikin 😽';
+  else this.textContent='Lanjutannya segera menyusul.';
 });
 </script>
 </body>

@@ -71,7 +71,7 @@
   <div class="rotate">Miringkan HP ke samping<br>(mode landscape) ya</div>
 
 <script>
-var NEXT_URL = 'halaman2.html?v=5'; // isi nanti, misal 'halaman2.html'
+var NEXT_URL = 'halaman2.html?v=6'; // isi nanti, misal 'halaman2.html'
 
 var st=document.getElementById('stage');
 var DPR=Math.min(window.devicePixelRatio||1,2);
@@ -471,6 +471,6 @@ document.addEventListener('touchmove',function(ev){if(ev.touches.length>1)ev.pre
 var lastTap=0;
 document.addEventListener('touchend',function(ev){var n=Date.now();if(n-lastTap<350)ev.preventDefault();lastTap=n;},{passive:false});
 </script>
-<script src="colek.js?v=18"></script>
+<script src="colek.js?v=19"></script>
 </body>
 </html>

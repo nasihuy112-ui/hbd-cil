@@ -153,10 +153,12 @@ balon.addEventListener('click', colek);
 window.addEventListener('pageshow', function(e){ if(e.persisted) reset(); });
 })();
 
+
 /* mode-tegak */
 (function(){
 var c = document.createElement('style');
-c.textContent = '@media (orientation:portrait){.stage{overflow:visible}' +
-  '.balon{width:36cqw;height:19cqw;margin:-17cqw 0 0 -9cqw}.balon span{font-size:3.2cqw}}';
+c.textContent = '@media (orientation:portrait){' +
+  '.stage{overflow:visible;scale:1.4}' +
+  '.balon{width:28cqw;height:15cqw;margin:-13cqw 0 0 -7cqw}.balon span{font-size:2.6cqw}}';
 document.head.appendChild(c);
 })();
