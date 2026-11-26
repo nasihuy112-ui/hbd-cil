@@ -109,6 +109,14 @@
   @keyframes fx2tw{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(90deg)}}
   .fx2pop{position:absolute;pointer-events:none;color:#e0527f;font-size:3cqw;z-index:5;animation:fx2pop 1.2s ease-out forwards}
   @keyframes fx2pop{0%{opacity:1;transform:translate(-50%,-50%) scale(.6)}100%{opacity:0;transform:translate(-50%,-320%) scale(1.5)}}
+/*FX3*/
+  #p2 img{transition:opacity .7s ease !important;box-shadow:0 0 0 .7cqw rgba(255,255,255,.3),0 0 0 1.3cqw rgba(255,170,200,.2),0 2cqw 5cqw rgba(120,20,60,.45) !important;outline:.3cqw solid rgba(255,255,255,.92);outline-offset:-.1cqw}
+  #p2 img.sw{opacity:0 !important}
+  #p2 .w{background:linear-gradient(100deg,#5e1428 0%,#b0305a 35%,#e07a9c 50%,#b0305a 65%,#5e1428 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;text-shadow:none;filter:drop-shadow(0 .1cqw .25cqw rgba(255,255,255,.9))}
+  #p2 .pg.on .w{animation:fx2in .7s cubic-bezier(.2,.8,.2,1) var(--d,0s) forwards,fx3shim 6s linear infinite}
+  @keyframes fx3shim{from{background-position:300% 0}to{background-position:-100% 0}}
+  .fx3gl{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;opacity:.9;border-radius:inherit;z-index:2}
+  .fx3vig{position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:3;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(100,12,48,.42) 100%)}
 </style>
 </head>
 <body>
@@ -124,12 +132,12 @@
       <div class="foto"><img src="cewe.png?v=2" alt=""></div>
       <div class="teks">
         <div class="isi">
-          <div class="pg">Selamat ulang tahun yang ke 19 sayanggg, aku bersyukur punya kamu di hidup aku, semoga di umur yang baru ini kamu selalu sehat, dilindungi Allah, dan hatinya makin tenang. Apa yang kamu impikan semoga dimudahkan satu per satu yaawww&#10084;&#65039;&#10084;&#65039;&#10084;&#65039;</div>
-          <div class="pg">Jadi kali ini aku mau kasih kamu sesuatu. Sebuah kejutan kecil yang aku susun khusus buat kamu, lengkap dengan hal2 yang ingin aku sampaikan.</div>
+          <div class="pg">Selamat ulang tahun yang ke 19 sayanggg, aku bersyukur banget punya kamu di hidup aku. Semoga di usia yang baru ini kamu selalu sehat, dilindungi Allah, dan mentalnya makin tenang. Semua impian dan ambisi kamu semoga dimudahkan satu per satu yaawww&#10084;&#65039;&#10084;&#65039;&#10084;&#65039;</div>
+          <div class="pg">Jadi kali ini aku mau kasih kamu sesuatu. Sebuah surprise kecil yang aku desain khusus buat kamu, lengkap dengan semua pesan dan apresiasi yang ingin aku sampaikan.</div>
           <div class="pg">aku tau tahun ini berat buat kamu, ga semua berjalan sesuai ekspektasi kamu, tapi kamu tetap bertahan dan terus melangkah. Itu ga gampang, dan aku salut sama kamu.</div>
           <div class="pg">aku salut sama cara kamu ngejalanin hidup. dedikasi kamu, sikap independen kamu, dan keberanian kamu jalan sendiri tanpa nunggu siapa2, aku apresiasi banget. di sisi lain aku ngerasa kurang, karena jarak bikin aku ga bisa nemenin kamu ke mana pun kamu pergi, aku cuma bisa lewat hp, dan buat itu aku minta maaf ya sayangg, tapi tiap kamu pergi, aku selalu pengen tau kamu sampai dengan selamat&#129402;</div>
-          <div class="pg">pesan dari aku, tetap semangat ya, tapi prioritasin keselamatan kamu pas kerja, dan lebih teliti sama barang kamu, kalau kamu ceroboh aku nya ikut khawatir tauuu, dan aku ga bisa langsung bantu karena jarak. jadi selalu hati2 yaa sayanggg&#129392;&#10084;&#65039;</div>
-          <div class="pg">suatu saat nanti, aku yakin kita bakal bisa ngerasain pacaran kayak orang biasanya. ketemu langsung, jalan bareng, ga cuma lewat hp. semoga bulan Januari 2027 nanti jadi awalnya, kita bisa ketemu. aku percaya kita bisa ngelewatin ini, jadi sabar sebentar lagi ya sayangg</div>
+          <div class="pg">pesan dari aku, tetap semangat ya, tapi prioritasin keselamatan kamu di mana pun kamu berada, pas kerja, di jalan, maupun di tempat lain, dan lebih teliti sama barang kamu, kalo kamu ceroboh aku nya jadi suka ikut khawatir tauuu, dan aku ga bisa langsung bantu karena jarak. jadi selalu hati2 yaa sayanggg&#129392;&#10084;&#65039;</div>
+          <div class="pg">suatu saat nanti, aku optimis kita bakal bisa ngerasain pacaran yang romantis kaya pasangan normal lainnya. ketemu langsung, jalan bareng, ga cuma komunikasi lewat hp. semoga bulan Januari 2027 nanti jadi momen awalnya, kita bisa ketemu. aku yakin kita bisa ngelewatin fase ini, jadi sabar sebentar lagi ya sayangg&#129392;</div>
           <div class="pg">Semoga kamu suka ya sayangg!</div>
         </div>
         <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -636,6 +644,65 @@ document.addEventListener('touchend',function(ev){var n=Date.now();if(n-lastTap<
     p.appendChild(e);
     setTimeout(function(){e.remove();},1300);
   });
+})();
+</script>
+<script>
+(function(){
+  var p=document.getElementById('p2'); if(!p)return;
+  /* shader sinematik */
+  var c=document.createElement('canvas'); c.className='fx3gl'; p.appendChild(c);
+  var v=document.createElement('div'); v.className='fx3vig'; p.appendChild(v);
+  var gl=c.getContext('webgl',{alpha:false,antialias:false});
+  if(gl){
+    var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+    var fs='precision mediump float;uniform vec2 R;uniform float T;'
+    +'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}'
+    +'void main(){vec2 uv=gl_FragCoord.xy/R;float ar=R.x/R.y;vec3 col=vec3(0.);'
+    +'for(int i=0;i<14;i++){float f=float(i);'
+    +'vec2 pos=vec2(fract(h(vec2(f,1.))+sin(T*.15+f)*.05),fract(h(vec2(f,2.))+T*(.02+.04*h(vec2(f,3.)))));'
+    +'float r=.02+.05*h(vec2(f,4.));float d=length((uv-pos)*vec2(ar,1.));'
+    +'float b=smoothstep(r,r*.6,d)*.45+smoothstep(r*.15,0.,abs(d-r*.85))*.5;'
+    +'col+=b*mix(vec3(1.,.5,.7),vec3(1.,.85,.55),h(vec2(f,5.)))*(.3+.25*sin(T*.8+f));}'
+    +'float lk=smoothstep(0.,1.,1.-abs(uv.x-(.5+.5*sin(T*.2)))*1.7);'
+    +'col+=vec3(1.,.4,.5)*lk*.09*(1.-uv.y)+vec3(1.,.8,.5)*.06*smoothstep(.6,1.,uv.x);'
+    +'col+=h(gl_FragCoord.xy+fract(T)*97.)*.05;'
+    +'gl_FragColor=vec4(col,1.);}';
+    var pr=gl.createProgram();
+    [[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]].forEach(function(x){var s=gl.createShader(x[0]);gl.shaderSource(s,x[1]);gl.compileShader(s);gl.attachShader(pr,s);});
+    gl.linkProgram(pr); gl.useProgram(pr);
+    var bf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,bf);
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    var al=gl.getAttribLocation(pr,'a'); gl.enableVertexAttribArray(al); gl.vertexAttribPointer(al,2,gl.FLOAT,false,0,0);
+    var uR=gl.getUniformLocation(pr,'R'), uT=gl.getUniformLocation(pr,'T');
+    function rs(){var d=Math.min(devicePixelRatio||1,1.5),w=Math.max(2,p.clientWidth*d|0),hh=Math.max(2,p.clientHeight*d|0);if(c.width!==w||c.height!==hh){c.width=w;c.height=hh;gl.viewport(0,0,w,hh);}}
+    (function loop(t){
+      requestAnimationFrame(loop);
+      if(!p.classList.contains('on')||document.hidden)return;
+      rs(); gl.uniform2f(uR,c.width,c.height); gl.uniform1f(uT,t/1000);
+      gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+    })(0);
+  } else c.remove();
+  /* foto ganti-ganti acak */
+  var im=p.querySelector('img')||document.querySelector('img[src*="cewe"]'); if(!im)return;
+  var L=[im.getAttribute('src'),'foto/2.png','foto/3.png','foto/4.png','foto/6.jpg','foto/7.jpg','foto/8.jpg'];
+  L.slice(1).forEach(function(s){new Image().src=s;});
+  var bag=[],cur=0;
+  function nxt(){
+    if(!bag.length){bag=L.map(function(_,i){return i;}).sort(function(){return Math.random()-.5;});
+      if(bag[bag.length-1]===cur&&bag.length>1)bag.unshift(bag.pop());}
+    return bag.pop();
+  }
+  function sw(){
+    if(!p.classList.contains('on'))return;
+    var n=nxt(); if(n===cur)return; cur=n;
+    im.classList.add('sw');
+    setTimeout(function(){
+      im.onload=function(){im.classList.remove('sw');};
+      im.src=L[n];
+      setTimeout(function(){im.classList.remove('sw');},1500);
+    },700);
+  }
+  setInterval(sw,4500);
 })();
 </script>
 </body>
