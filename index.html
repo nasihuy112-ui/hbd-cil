@@ -11,7 +11,7 @@
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;
     -webkit-text-size-adjust:none;text-size-adjust:none;-webkit-user-select:none;user-select:none}
   html,body{height:100%;color:#3a0d12;overflow:hidden;touch-action:none;
-    background:radial-gradient(circle at 50% 42%,#f8f5f1 0%,#f1eeea 55%,#e9e4de 100%)}
+    background:#000}
   body{display:flex;align-items:center;justify-content:center}
 
   #bg,#fg{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
@@ -19,9 +19,11 @@
   #fg{z-index:1}
 
   .stage{
-    position:relative;z-index:2;
-    width:min(100vw,calc(100dvh*16/9));
-    height:min(100dvh,calc(100vw*9/16));
+    position:relative;z-index:0;
+    width:min(92vw,calc(86dvh*1.45));aspect-ratio:1.45;
+    background:linear-gradient(145deg,#f9d3dd 0%,#f3bccb 55%,#eeaabd 100%);
+    border-radius:6vw;border:1px solid rgba(255,255,255,.28);
+    box-shadow:0 0 7vw rgba(240,140,170,.22),inset 0 0 8vw rgba(255,255,255,.22);
     container-type:inline-size;overflow:hidden
   }
 
@@ -55,6 +57,7 @@
     align-items:center;justify-content:center;text-align:center;padding:24px;
     font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.5}
   .rotate{display:none!important}
+  .next{display:none!important}
 </style>
 </head>
 <body>
@@ -71,7 +74,7 @@
   <div class="rotate">Miringkan HP ke samping<br>(mode landscape) ya</div>
 
 <script>
-var NEXT_URL = 'halaman2.html?v=6'; // isi nanti, misal 'halaman2.html'
+var NEXT_URL = ''; // isi nanti, misal 'halaman2.html'
 
 var st=document.getElementById('stage');
 var DPR=Math.min(window.devicePixelRatio||1,2);
@@ -130,7 +133,7 @@ var BGF=PREC+[
 
 var cv=document.getElementById('bg'), bgl=null, BU={};
 var ptT=-99, ptX=0, ptY=0, buT=-99, bpX=0, bpY=0;
-try{ bgl=cv.getContext('webgl',{antialias:false,alpha:false,powerPreference:'low-power'})||cv.getContext('experimental-webgl'); }catch(e){}
+
 if(bgl){
   var bp=program(bgl,BGV,BGF);
   if(bp){
@@ -299,8 +302,8 @@ function build(){
   if(fgl)sprites.forEach(function(s){if(s.tex)fgl.deleteTexture(s.tex);});
   sprites=[];
 
-  var FS=9.5;
-  var happy=titleTex('H','appy',FS), bday=titleTex('B','irthday',FS);
+  var FS=9.5, TS=.85, FIT=82, HU=100/1.45;
+  var happy=titleTex('H','appy',FS*TS), bday=titleTex('B','irthday',FS*TS);
   var nm=nameTex('Vika Arianti',3.0);
   var tg=tagTex('"A little digital memory book built with love, just for you."',2.3);
   var ln=lineTex(nm.inkW-.8,.3);
@@ -314,8 +317,9 @@ function build(){
   var bBase=r2y+11.0, nameBase=bBase+6.6, lineY=nameBase+1.4, tagBase=lineY+5.6;
   var gw=Math.max(catX+catW,rx+bday.inkW), gh=tagBase+1.0;
 
-  GS=Math.min(1.12,88/gw,0.84*56.25/gh);
-  GX=50-GS*gw/2; GY=(56.25-GS*gh)/2+.6;
+  var gwRef=Math.max(happy.inkW/TS+2.0+catW,rx+bday.inkW/TS); // skala nama/surat/kucing tetap
+  GS=Math.min(1.8,FIT/gwRef,.8*HU/gh);
+  GX=50-GS*gw/2; GY=(HU-GS*gh)/2+.6;
 
   function add(o){sprites.push(o);}
   var P=function(t,x,y,o){o.cv=t.cv;o.x=x;o.y=y;o.w=t.bw;o.h=t.bh;return o;};
@@ -471,6 +475,5 @@ document.addEventListener('touchmove',function(ev){if(ev.touches.length>1)ev.pre
 var lastTap=0;
 document.addEventListener('touchend',function(ev){var n=Date.now();if(n-lastTap<350)ev.preventDefault();lastTap=n;},{passive:false});
 </script>
-<script src="colek.js?v=19"></script>
 </body>
 </html>
