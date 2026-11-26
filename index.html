@@ -443,7 +443,7 @@ var fontsP=(document.fonts&&document.fonts.load)?Promise.all([
 ]):Promise.resolve();
 Promise.all([
   Promise.race([fontsP,new Promise(function(r){setTimeout(r,3000);})]),
-  loadImg('kucing.png?v=10'),loadImg('surat.png?v=10'),loadImg('saya.png?v=4')
+  loadImg('kucing.png?v=10'),loadImg('surat.png?v=10'),loadImg('saya.png?v=5')
 ]).then(function(r){IMG.cat=r[1];IMG.letter=r[2];IMG.me=r[3];build();});
 
 /* ================= TOMBOL NEXT ================= */
