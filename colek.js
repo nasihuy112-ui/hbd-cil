@@ -1,5 +1,5 @@
 (function(){
-var JEDA_MUNCUL = 2;  // detik sebelum balon muncul
+var JEDA_MUNCUL = 7;  // detik sebelum balon muncul
 var TEKS = [          // [teks, lama tampil (ms)]
   ['Vikaaa!', 1500],
   ['Colek aku dong!', 1800],
