@@ -9,11 +9,9 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;
     -webkit-text-size-adjust:none;text-size-adjust:none}
-  html,body{height:100%;background:#f1eeea;color:#3a0d12;overflow:hidden;
-    touch-action:manipulation}
+  html,body{height:100%;background:#f1eeea;color:#3a0d12;overflow:hidden;touch-action:manipulation}
   body{display:flex;align-items:center;justify-content:center}
 
-  /* kanvas 9:16, semua ukuran dihitung dari lebarnya */
   .stage{
     position:relative;
     width:min(100vw,calc(100dvh*9/16));
@@ -26,28 +24,26 @@
     background:#3a0d12;color:#f1eeea;border:0;border-radius:999px;padding:1.8cqw 4.6cqw;
     font-family:'Playfair Display',Georgia,serif;font-size:3.8cqw;cursor:pointer}
 
-  .content{width:max-content;transform-origin:center;
-    display:flex;flex-direction:column;align-items:flex-start;gap:0}
+  /* satu kolom, semuanya rata tengah */
+  .content{width:80cqw;display:flex;flex-direction:column;align-items:center;
+    text-align:center;transform-origin:center}
 
-  .title{font-family:'Playfair Display',Georgia,serif;line-height:1;white-space:nowrap}
-  .sc{font-family:'Great Vibes',cursive;font-size:1.5em;line-height:.8}
+  .cat{height:36cqw;width:auto;display:block}
 
-  .row1{display:flex;align-items:flex-end;gap:2cqw}
-  .happy{font-size:16cqw}
-  .cat{height:32cqw;width:auto;margin-bottom:1cqw}
+  .title{font-family:'Great Vibes',cursive;line-height:1;white-space:nowrap}
+  .happy{font-size:22cqw;margin-top:2cqw}
+  .bday{font-size:22cqw;margin-top:-3cqw}
 
-  .bday{font-size:16cqw;margin-top:-4cqw;margin-left:12cqw}
+  .letter{width:34cqw;height:auto;display:block;margin-top:5cqw}
+  .name{font-family:'Special Elite',monospace;font-size:4.2cqw;letter-spacing:.3em;
+    margin-top:3cqw;padding-left:.3em;white-space:nowrap}
 
-  .row2{display:flex;align-items:center;gap:4cqw;margin-top:3cqw}
-  .letter{width:30cqw;height:auto}
-  .name{font-family:'Special Elite',monospace;font-size:3.4cqw;letter-spacing:.25em;
-    white-space:nowrap}
+  .tag{font-family:'Special Elite',monospace;font-size:3.2cqw;letter-spacing:.05em;
+    line-height:1.7;opacity:.85;margin-top:6cqw}
 
-  .tag{align-self:center;font-family:'Special Elite',monospace;font-size:3.2cqw;
-    letter-spacing:.06em;text-align:center;line-height:1.7;opacity:.85;margin-top:7cqw}
-
-  .content>*{opacity:0;animation:in .9s ease forwards}
-  .row1{animation-delay:.1s}.bday{animation-delay:.5s}.row2{animation-delay:.9s}.tag{animation-delay:1.3s}
+  .content>*{opacity:0;animation:in .8s ease forwards}
+  .cat{animation-delay:.1s}.happy{animation-delay:.4s}.bday{animation-delay:.6s}
+  .letter{animation-delay:.9s}.name{animation-delay:1.1s}.tag{animation-delay:1.3s}
   @keyframes in{from{opacity:0;transform:translateY(2cqw)}to{opacity:1;transform:none}}
 
   .rotate{display:none;position:fixed;inset:0;z-index:99;background:#f1eeea;
@@ -61,18 +57,11 @@
     <button class="next" id="next">Next</button>
 
     <div class="content" id="content">
-      <div class="row1">
-        <div class="title happy"><span class="sc">H</span>appy</div>
-        <img class="cat" src="kucing.png?v=4" alt="">
-      </div>
-
-      <div class="title bday"><span class="sc">B</span>irthday</div>
-
-      <div class="row2">
-        <img class="letter" src="surat.png?v=4" alt="">
-        <div class="name">Vika Arianti</div>
-      </div>
-
+      <img class="cat" src="kucing.png?v=5" alt="">
+      <div class="title happy">Happy</div>
+      <div class="title bday">Birthday</div>
+      <img class="letter" src="surat.png?v=5" alt="">
+      <div class="name">Vika Arianti</div>
       <p class="tag">"A little digital memory book<br>built with love, just for you."</p>
     </div>
   </div>
@@ -82,11 +71,11 @@
 <script>
   try{ screen.orientation && screen.orientation.lock && screen.orientation.lock('portrait').catch(function(){}); }catch(e){}
 
-  // pastikan isi selalu muat di layar, apa pun ukuran HP dan font-nya
+  // pengaman: kalau isi lebih tinggi dari layar, otomatis dikecilkan
   var stage=document.getElementById('stage'), c=document.getElementById('content');
   function fit(){
     c.style.transform='none';
-    var s=Math.min(1,(stage.clientWidth*0.9)/c.scrollWidth,(stage.clientHeight*0.9)/c.scrollHeight);
+    var s=Math.min(1,(stage.clientHeight*0.92)/c.scrollHeight);
     c.style.transform='scale('+s+')';
   }
   window.addEventListener('load',fit);
