@@ -120,7 +120,7 @@ function loop(now){
     balon.style.top = Math.max(y - h/2 - 1, .5)*u + 'px';
 
     // cuma bunyi kalau HP posisi landscape dan tab lagi dibuka
-    if(!dicolek && t >= JEDA_MUNCUL && now >= ganti && innerWidth > innerHeight && !document.hidden){
+    if(!dicolek && t >= JEDA_MUNCUL && now >= ganti && !document.hidden){
       ngomong();
       ganti = now + TEKS[idx][1];
       idx = (idx + 1) % TEKS.length;
@@ -151,4 +151,12 @@ function colek(){
 hit.addEventListener('click', colek);
 balon.addEventListener('click', colek);
 window.addEventListener('pageshow', function(e){ if(e.persisted) reset(); });
+})();
+
+/* mode-tegak */
+(function(){
+var c = document.createElement('style');
+c.textContent = '@media (orientation:portrait){.stage{overflow:visible}' +
+  '.balon{width:36cqw;height:19cqw;margin:-17cqw 0 0 -9cqw}.balon span{font-size:3.2cqw}}';
+document.head.appendChild(c);
 })();

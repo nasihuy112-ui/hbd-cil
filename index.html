@@ -54,7 +54,7 @@
   .rotate{display:none;position:fixed;inset:0;z-index:99;background:#f1eeea;
     align-items:center;justify-content:center;text-align:center;padding:24px;
     font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.5}
-  @media (orientation:portrait){.rotate{display:flex}.stage,#fg{display:none}}
+  .rotate{display:none!important}
 </style>
 </head>
 <body>
@@ -71,8 +71,7 @@
   <div class="rotate">Miringkan HP ke samping<br>(mode landscape) ya</div>
 
 <script>
-var NEXT_URL = 'halaman2.html?v=4'; // isi nanti, misal 'halaman2.html'
-try{ screen.orientation && screen.orientation.lock && screen.orientation.lock('landscape').catch(function(){}); }catch(e){}
+var NEXT_URL = 'halaman2.html?v=5'; // isi nanti, misal 'halaman2.html'
 
 var st=document.getElementById('stage');
 var DPR=Math.min(window.devicePixelRatio||1,2);
@@ -472,6 +471,6 @@ document.addEventListener('touchmove',function(ev){if(ev.touches.length>1)ev.pre
 var lastTap=0;
 document.addEventListener('touchend',function(ev){var n=Date.now();if(n-lastTap<350)ev.preventDefault();lastTap=n;},{passive:false});
 </script>
-<script src="colek.js?v=12"></script>
+<script src="colek.js?v=18"></script>
 </body>
 </html>

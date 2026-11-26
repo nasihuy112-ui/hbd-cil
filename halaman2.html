@@ -61,9 +61,23 @@ html,body{height:100%;overflow:hidden;background:#f8e9ec;font-family:'Playfair D
 #lanjut.ada{opacity:1;visibility:visible;transform:none}
 
 #kilat{position:fixed;inset:0;z-index:7;pointer-events:none;opacity:0;background:radial-gradient(circle,#fff,#ffd3dc 45%,transparent 75%)}
-.putar{display:none;position:fixed;inset:0;z-index:99;background:#f8e9ec;color:#5a1422;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:20px;line-height:1.5}
-@media (orientation:portrait){.putar{display:flex}}
-
+@media (orientation:portrait){
+#env{width:78vw;margin-top:0}
+#kertas{font-size:9vw}
+#segel{font-size:7vw}
+#petunjuk{bottom:auto;top:calc(50% + 31vw);font-size:4.4vw}
+#kucing{height:34vw;left:2vw;bottom:-1vw}
+#balon{left:4vw;bottom:36vw;max-width:70vw;font-size:4vw;padding:3vw 4vw}
+#surat{width:90vw;top:4vh;bottom:37vw}
+#bingkai{left:-6vw;top:-6vw;width:calc(100% + 12vw);height:calc(100% + 12vw)}
+#surat.polos{border-radius:6vw}
+#gulung{inset:3.2vw 2.4vw;padding:5vw 2.5vw 14vw}
+#isi{font-size:4.1vw}
+#isi p{margin-bottom:4vw}
+#isi p::after{margin-top:3vw;font-size:4.5vw}
+#judul{margin-bottom:5vw}
+#lanjut{margin-top:5vw;padding:3vw 9vw;font-size:4.4vw}
+}
 @keyframes masuk{from{opacity:0;transform:translateY(-70vh) rotateY(360deg) scale(.2)}to{opacity:1;transform:none}}
 @keyframes layang{50%{transform:translateY(-2.5vh) rotateX(6deg) rotateY(-7deg)}}
 @keyframes detak{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.14)}}
@@ -94,7 +108,6 @@ html,body{height:100%;overflow:hidden;background:#f8e9ec;font-family:'Playfair D
 
 <canvas id="fx"></canvas>
 <div id="kilat"></div>
-<div class="putar">Miringkan HP ke samping<br>(mode landscape) ya</div>
 
 <script>
 var NEXT_URL = ''; // isi nanti: 'halaman3.html'
@@ -269,7 +282,7 @@ function shaderDi(kanvas,frag){
   function pas(){skala=Math.min(devicePixelRatio||1,2)*.55;
     k.width=Math.round(k.offsetWidth*skala);k.height=Math.round(k.offsetHeight*skala);}
   pas();addEventListener('resize',pas);
-  hiasan.push(function(t){if(sudah)sh.gambar(t,0,innerHeight/100*skala);});
+  hiasan.push(function(t){if(sudah)sh.gambar(t,0,Math.min(innerWidth,innerHeight)/100*skala);});
 })();
 
 /* judul: tulisan dengan shader seperti di tab 1 */
