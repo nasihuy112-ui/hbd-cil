@@ -58,6 +58,22 @@
     font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.5}
   .rotate{display:none!important}
   .next{display:none!important}
+  #p2{position:absolute;inset:0;z-index:5;display:flex;align-items:center;padding:0 5cqw;
+    opacity:0;pointer-events:none;transition:opacity 1.4s ease}
+  #p2.on{opacity:1}
+  #p2 .foto{flex:0 0 auto;height:60cqw;aspect-ratio:3/4;border-radius:3cqw;overflow:hidden;
+    border:.5cqw solid rgba(255,255,255,.75);box-shadow:0 2cqw 6cqw rgba(104,26,44,.28);
+    opacity:0;transform:translateX(-6cqw) scale(.94);
+    transition:transform 1.6s cubic-bezier(.2,.8,.2,1) .3s,opacity 1.4s ease .3s}
+  #p2.on .foto{opacity:1;transform:none}
+  #p2 .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+  #p2 .teks{flex:1 1 0;min-width:0;margin-left:5cqw;text-align:left;color:#4a1220}
+  #p2 .judul{font-family:'Great Vibes',cursive;font-size:7cqw;line-height:1.05;color:#7a1f35;
+    margin-bottom:2.2cqw;opacity:0;transition:opacity 1.2s ease .8s}
+  #p2 .isi{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;
+    font-size:2.7cqw;line-height:1.6}
+  #p2 .isi span{opacity:0;transition:opacity 1.2s ease}
+  #p2.on .judul,#p2.on .isi span{opacity:1}
 </style>
 </head>
 <body>
@@ -69,6 +85,13 @@
       <span>Next</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
+    <div id="p2">
+      <div class="foto"><img src="cewe.jpg?v=1" alt=""></div>
+      <div class="teks">
+        <div class="judul">Happy 19th Birthday</div>
+        <div class="isi"><span>Selamat ulang tahun yang ke-19, sayangku Vika.</span> <span>Aku bersyukur banget Allah pertemukan aku sama kamu.</span> <span>Di umur yang baru ini, aku doain kamu selalu bahagia, sehat, dan terus tersenyum seperti di foto ini.</span> <span>Makasih udah jadi alasan aku jadi lebih baik tiap harinya ❤️</span></div>
+      </div>
+    </div>
   </div>
 
   <div class="rotate">Miringkan HP ke samping<br>(mode landscape) ya</div>
@@ -443,8 +466,17 @@ var fontsP=(document.fonts&&document.fonts.load)?Promise.all([
 ]):Promise.resolve();
 Promise.all([
   Promise.race([fontsP,new Promise(function(r){setTimeout(r,3000);})]),
-  loadImg('kucing.png?v=10'),loadImg('surat.png?v=10'),loadImg('saya.png?v=4')
-]).then(function(r){IMG.cat=r[1];IMG.letter=r[2];IMG.me=r[3];build();});
+  loadImg('kucing.png?v=10'),loadImg('surat.png?v=10'),loadImg('saya.png?v=10')
+]).then(function(r){IMG.cat=r[1];IMG.letter=r[2];IMG.me=r[3];build();setTimeout(showP2,7000);});
+
+/* ================= HALAMAN 2 ================= */
+function showP2(){
+  var p=document.getElementById('p2'), f=document.getElementById('fg');
+  f.style.transition='opacity 1.2s ease';f.style.opacity='0';
+  var s=p.querySelectorAll('.isi span');
+  for(var i=0;i<s.length;i++)s[i].style.transitionDelay=(1.6+i*1.3)+'s';
+  p.classList.add('on');
+}
 
 /* ================= TOMBOL NEXT ================= */
 var HC=['#8b1e2d','#c9808a','#d9a07c','#e7b6bf'];
