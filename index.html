@@ -91,6 +91,24 @@
   #p2 .dots i.on{width:3.2cqw;background:#7a1f35}
   #p2 .hint{margin-top:1.4cqw;font-family:'Lora',Georgia,serif;font-size:1.6cqw;letter-spacing:.08em;color:rgba(122,31,53,.75);opacity:0;transition:opacity .6s ease}
   #p2 .hint.on{opacity:1}
+/*FX2*/
+  @keyframes fx2float{0%,100%{translate:0 0}50%{translate:0 -1.1cqw}}
+  @keyframes fx2glow{0%,100%{filter:drop-shadow(0 0 1.2cqw rgba(255,255,255,.9)) drop-shadow(0 0 2.4cqw rgba(236,100,150,.45))}50%{filter:drop-shadow(0 0 2cqw rgba(255,255,255,1)) drop-shadow(0 0 4cqw rgba(236,100,150,.85))}}
+  #p2 img{animation:fx2float 5s ease-in-out infinite,fx2glow 3.4s ease-in-out infinite}
+  #p2 .isi{background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(255,255,255,.24));border:.2cqw solid rgba(255,255,255,.8);border-radius:2.2cqw;padding:1.6cqw 2.2cqw;box-shadow:0 1cqw 3cqw rgba(160,40,80,.2),inset 0 0 2cqw rgba(255,255,255,.55);-webkit-backdrop-filter:blur(.6cqw);backdrop-filter:blur(.6cqw);font-size:2.5cqw;color:#6b1a30;text-shadow:0 .1cqw .3cqw rgba(255,255,255,.85)}
+  @keyframes fx2in{from{opacity:0;transform:translateY(1cqw) scale(.96);filter:blur(.4cqw)}to{opacity:1;transform:none;filter:blur(0)}}
+  #p2 .w{display:inline-block;opacity:0}
+  #p2 .pg.on .w{animation:fx2in .7s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d,0s)}
+  #p2 .dots i.on{box-shadow:0 0 1cqw rgba(122,31,53,.55)}
+  @keyframes fx2hint{0%,100%{translate:0 0}50%{translate:.9cqw 0}}
+  #p2 .hint.on{animation:fx2hint 1.4s ease-in-out infinite}
+  .fx2shine{position:absolute;inset:0;pointer-events:none;border-radius:inherit;overflow:hidden;z-index:1}
+  .fx2shine::before{content:'';position:absolute;top:-20%;bottom:-20%;width:28%;left:-40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-18deg);animation:fx2shine 6s ease-in-out infinite}
+  @keyframes fx2shine{0%{left:-40%}55%,100%{left:130%}}
+  .fx2sp{position:absolute;pointer-events:none;color:#fff;text-shadow:0 0 1cqw #ff7aa8,0 0 2cqw #ff9fc0;opacity:0;animation:fx2tw var(--t,3s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+  @keyframes fx2tw{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(90deg)}}
+  .fx2pop{position:absolute;pointer-events:none;color:#e0527f;font-size:3cqw;z-index:5;animation:fx2pop 1.2s ease-out forwards}
+  @keyframes fx2pop{0%{opacity:1;transform:translate(-50%,-50%) scale(.6)}100%{opacity:0;transform:translate(-50%,-320%) scale(1.5)}}
 </style>
 </head>
 <body>
@@ -577,6 +595,48 @@ document.getElementById('next').addEventListener('click',function(){
 document.addEventListener('touchmove',function(ev){if(ev.touches.length>1)ev.preventDefault();},{passive:false});
 var lastTap=0;
 document.addEventListener('touchend',function(ev){var n=Date.now();if(n-lastTap<350)ev.preventDefault();lastTap=n;},{passive:false});
+</script>
+<script>
+(function(){
+  var p=document.getElementById('p2'); if(!p)return;
+  var pgs=p.querySelectorAll('.pg');
+  for(var a=0;a<pgs.length;a++){
+    var pg=pgs[a], t=pg.textContent.trim().split(/\s+/);
+    pg.textContent='';
+    for(var i=0;i<t.length;i++){
+      var s=document.createElement('span');
+      s.className='w'; s.textContent=t[i];
+      s.style.setProperty('--d',(0.25+i*0.04)+'s');
+      pg.appendChild(s);
+      if(i<t.length-1)pg.appendChild(document.createTextNode(' '));
+    }
+  }
+  var sh=document.createElement('div'); sh.className='fx2shine'; p.appendChild(sh);
+  function burst(){
+    for(var i=0;i<18;i++){
+      var e=document.createElement('span'); e.className='fx2sp';
+      e.textContent=i%2?'\u2726':'\u2727';
+      e.style.left=(Math.random()*94)+'%';
+      e.style.top=(Math.random()*90)+'%';
+      e.style.fontSize=(1.2+Math.random()*1.8)+'cqw';
+      e.style.setProperty('--t',(2.4+Math.random()*2.6)+'s');
+      e.style.setProperty('--dl',(Math.random()*3)+'s');
+      p.appendChild(e);
+    }
+  }
+  new MutationObserver(function(){
+    if(p.classList.contains('on')&&!p.dataset.fx){p.dataset.fx='1';burst();}
+  }).observe(p,{attributes:true,attributeFilter:['class']});
+  p.addEventListener('pointerup',function(ev){
+    var r=p.getBoundingClientRect();
+    var e=document.createElement('span'); e.className='fx2pop';
+    e.textContent='\u2665';
+    e.style.left=((ev.clientX-r.left)/r.width*100)+'%';
+    e.style.top=((ev.clientY-r.top)/r.height*100)+'%';
+    p.appendChild(e);
+    setTimeout(function(){e.remove();},1300);
+  });
+})();
 </script>
 </body>
 </html>
