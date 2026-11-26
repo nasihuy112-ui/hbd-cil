@@ -309,8 +309,8 @@ function build(){
   var ln=lineTex(nm.inkW-.8,.3);
   var cat=IMG.cat?imgTex(IMG.cat,17,true):null;
   var let_=IMG.letter?imgTex(IMG.letter,17.4,false):null;
-  var me=IMG.me?imgTex(IMG.me,17.5,false):null;
-  var catW=cat?cat.w:0, letW=let_?let_.w:0, meW=me?me.w*15/17.5+.6:0;
+  var me=IMG.me?imgTex(IMG.me,21,false):null;
+  var catW=cat?cat.w:0, letW=let_?let_.w:0, meW=me?me.w*15/21+.6:0;
 
   // susunan (satuan: lebar layar / 100), titik awal kiri-atas
   var happyBase=15.4, catX=happy.inkW+2.0;
@@ -327,7 +327,7 @@ function build(){
 
   if(let_)add(P(let_,-let_.m,r2y-let_.m,{type:1,seed:2.1,depth:1.2,start:1.6,dur:1.0,mode:'drop',fl:[.45,5,1],halo:.15,shadow:.4,gr:.5*K}));
   if(cat)add(P(cat,catX-cat.m,-cat.m,{type:1,seed:.7,depth:1.5,start:.9,dur:1.0,mode:'pop',fl:[.55,4,0],halo:.55,shadow:.12,gr:.55*K}));
-  if(me)add(P(me,catX+catW+.6-me.m,1.4-me.m,{type:1,seed:1.4,depth:1.3,start:1.2,dur:1.0,mode:'pop',fl:[.5,4.5,2],halo:.3,shadow:.12,gr:.5*K}));
+  if(me)add(P(me,catX+catW+0.4-me.m,0.4-me.m,{type:1,seed:1.4,depth:1.3,start:1.2,dur:1.0,mode:'pop',fl:[.5,4.5,2],halo:.3,shadow:.12,gr:.5*K}));
   add(P(happy,-happy.padX,happyBase-happy.base,{type:0,seed:.3,depth:.8,start:.2,dur:1.4,mode:'wipe',gr:.3*K}));
   add(P(bday,rx-bday.padX,bBase-bday.base,{type:0,seed:1.6,depth:.8,start:1.3,dur:1.5,mode:'wipe',gr:.3*K}));
   add(P(nm,rx-nm.padX,nameBase-nm.base,{type:0,seed:3.2,depth:.6,start:2.1,dur:.9,mode:'fade',alpha:1,gr:.2*K}));
@@ -443,7 +443,7 @@ var fontsP=(document.fonts&&document.fonts.load)?Promise.all([
 ]):Promise.resolve();
 Promise.all([
   Promise.race([fontsP,new Promise(function(r){setTimeout(r,3000);})]),
-  loadImg('kucing.png?v=10'),loadImg('surat.png?v=10'),loadImg('saya.png?v=7')
+  loadImg('kucing.png?v=10'),loadImg('surat.png?v=10'),loadImg('saya.png?v=8')
 ]).then(function(r){IMG.cat=r[1];IMG.letter=r[2];IMG.me=r[3];build();});
 
 /* ================= TOMBOL NEXT ================= */
