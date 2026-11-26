@@ -12,77 +12,59 @@
   html,body{height:100%;background:#f1eeea;color:#3a0d12;overflow:hidden;touch-action:manipulation}
   body{display:flex;align-items:center;justify-content:center}
 
+  /* kanvas 16:9, semua posisi dan ukuran dihitung dari lebarnya (cqw) */
   .stage{
     position:relative;
-    width:min(100vw,calc(100dvh*9/16));
-    height:min(100dvh,calc(100vw*16/9));
-    container-type:inline-size;
-    display:flex;align-items:center;justify-content:center;overflow:hidden
+    width:min(100vw,calc(100dvh*16/9));
+    height:min(100dvh,calc(100vw*9/16));
+    container-type:inline-size;overflow:hidden
   }
+  .stage>*{position:absolute}
 
-  .next{position:absolute;top:calc(5cqw + env(safe-area-inset-top));right:5cqw;z-index:5;
-    background:#3a0d12;color:#f1eeea;border:0;border-radius:999px;padding:1.8cqw 4.6cqw;
-    font-family:'Playfair Display',Georgia,serif;font-size:3.8cqw;cursor:pointer}
+  .next{top:4cqw;right:4cqw;z-index:5;background:#3a0d12;color:#f1eeea;border:0;
+    border-radius:999px;padding:.7cqw 2.6cqw;font-family:'Playfair Display',Georgia,serif;
+    font-size:2.2cqw;cursor:pointer}
 
-  /* satu kolom, semuanya rata tengah */
-  .content{width:80cqw;display:flex;flex-direction:column;align-items:center;
-    text-align:center;transform-origin:center}
+  .title{font-family:'Playfair Display',Georgia,serif;line-height:1;white-space:nowrap}
+  .sc{font-family:'Great Vibes',cursive;font-size:1.3em;line-height:.8;margin-right:.04em}
 
-  .cat{height:36cqw;width:auto;display:block}
+  .happy{left:17cqw;top:6.5cqw;font-size:10cqw}
+  .cat{left:55cqw;top:8.5cqw;width:13cqw;height:15.5cqw;object-fit:cover;object-position:top;
+    -webkit-mask-image:linear-gradient(#000 80%,transparent);mask-image:linear-gradient(#000 80%,transparent)}
+  .bday{left:38.5cqw;top:25cqw;font-size:9.6cqw}
+  .letter{left:17cqw;top:26.5cqw;width:20cqw;height:auto}
+  .name{left:38.5cqw;top:39.5cqw;font-family:'Special Elite',monospace;font-size:2.5cqw;
+    letter-spacing:.42em;white-space:nowrap}
+  .tag{left:0;width:100cqw;top:50cqw;text-align:center;font-family:'Special Elite',monospace;
+    font-size:1.7cqw;letter-spacing:.1em;white-space:nowrap;opacity:.85}
 
-  .title{font-family:'Great Vibes',cursive;line-height:1;white-space:nowrap}
-  .happy{font-size:22cqw;margin-top:2cqw}
-  .bday{font-size:22cqw;margin-top:-3cqw}
-
-  .letter{width:34cqw;height:auto;display:block;margin-top:5cqw}
-  .name{font-family:'Special Elite',monospace;font-size:4.2cqw;letter-spacing:.3em;
-    margin-top:3cqw;padding-left:.3em;white-space:nowrap}
-
-  .tag{font-family:'Special Elite',monospace;font-size:3.2cqw;letter-spacing:.05em;
-    line-height:1.7;opacity:.85;margin-top:6cqw}
-
-  .content>*{opacity:0;animation:in .8s ease forwards}
-  .cat{animation-delay:.1s}.happy{animation-delay:.4s}.bday{animation-delay:.6s}
-  .letter{animation-delay:.9s}.name{animation-delay:1.1s}.tag{animation-delay:1.3s}
-  @keyframes in{from{opacity:0;transform:translateY(2cqw)}to{opacity:1;transform:none}}
+  .stage>*:not(.next){opacity:0;animation:in .9s ease forwards}
+  .happy{animation-delay:.1s}.cat{animation-delay:.5s}.bday{animation-delay:.7s}
+  .letter{animation-delay:1s}.name{animation-delay:1.3s}.tag{animation-delay:1.6s}
+  @keyframes in{from{opacity:0;transform:translateY(1.5cqw)}to{opacity:1;transform:none}}
 
   .rotate{display:none;position:fixed;inset:0;z-index:99;background:#f1eeea;
     align-items:center;justify-content:center;text-align:center;padding:24px;
-    font-family:'Playfair Display',Georgia,serif;font-size:18px}
-  @media (orientation:landscape) and (max-height:600px){.rotate{display:flex}}
+    font-family:'Playfair Display',Georgia,serif;font-size:20px;line-height:1.5}
+  @media (orientation:portrait){.rotate{display:flex}.stage{display:none}}
 </style>
 </head>
 <body>
-  <div class="stage" id="stage">
+  <div class="stage">
     <button class="next" id="next">Next</button>
 
-    <div class="content" id="content">
-      <img class="cat" src="kucing.png?v=5" alt="">
-      <div class="title happy">Happy</div>
-      <div class="title bday">Birthday</div>
-      <img class="letter" src="surat.png?v=5" alt="">
-      <div class="name">Vika Arianti</div>
-      <p class="tag">"A little digital memory book<br>built with love, just for you."</p>
-    </div>
+    <div class="title happy"><span class="sc">H</span>appy</div>
+    <img class="cat" src="kucing.png?v=6" alt="">
+    <div class="title bday"><span class="sc">B</span>irthday</div>
+    <img class="letter" src="surat.png?v=6" alt="">
+    <div class="name">Vika Arianti</div>
+    <p class="tag">"A little digital memory book built with love, just for you."</p>
   </div>
 
-  <div class="rotate">Putar HP ke posisi tegak ya</div>
+  <div class="rotate">Miringkan HP ke samping<br>(mode landscape) ya</div>
 
 <script>
-  try{ screen.orientation && screen.orientation.lock && screen.orientation.lock('portrait').catch(function(){}); }catch(e){}
-
-  // pengaman: kalau isi lebih tinggi dari layar, otomatis dikecilkan
-  var stage=document.getElementById('stage'), c=document.getElementById('content');
-  function fit(){
-    c.style.transform='none';
-    var s=Math.min(1,(stage.clientHeight*0.92)/c.scrollHeight);
-    c.style.transform='scale('+s+')';
-  }
-  window.addEventListener('load',fit);
-  window.addEventListener('resize',fit);
-  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit);}
-  Array.prototype.forEach.call(document.images,function(i){i.addEventListener('load',fit);});
-
+  try{ screen.orientation && screen.orientation.lock && screen.orientation.lock('landscape').catch(function(){}); }catch(e){}
   document.getElementById('next').addEventListener('click', function () {
     // window.location.href = 'next.html';
   });
