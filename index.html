@@ -161,6 +161,17 @@
   #p2 .ctr .pg{font-family:var(--ff,'Cormorant Garamond','Lora',Georgia,serif) !important;font-style:var(--fst,italic) !important;font-weight:var(--fw,500) !important;font-size:calc(var(--fs,3cqw)*1.14) !important;letter-spacing:.015em !important;line-height:1.6 !important}
   #p2 .ctr .pg::before{inset:-3.2cqw -6cqw !important;border-radius:50% !important;background:radial-gradient(closest-side,rgba(0,0,0,.6) 46%,rgba(0,0,0,.28) 74%,rgba(0,0,0,0) 100%) !important}
   #p2 .ctr .pg .w{color:#fff4f7 !important;-webkit-text-fill-color:#fff4f7 !important;text-shadow:0 .1cqw .6cqw rgba(0,0,0,.85),0 0 1.4cqw rgba(0,0,0,.55) !important}
+/*FX8*/
+  #p2 .bgl .ph{padding:.9cqw .9cqw 3.4cqw !important;background:#fffaf8 !important;border-radius:.5cqw !important;box-shadow:0 1.2cqw 2.8cqw rgba(110,24,52,.3),0 .2cqw .5cqw rgba(110,24,52,.18) !important;filter:blur(.55cqw);opacity:.78}
+  #p2 .bgl .ph img{border-radius:.25cqw !important}
+  #p2 .bgl.clear .ph{filter:blur(0) !important;opacity:1 !important}
+  #p2 .bgl .tx{color:#fff !important;text-shadow:0 0 .7cqw rgba(190,50,95,.9),0 0 1.6cqw rgba(190,50,95,.55) !important;opacity:.8}
+  #p2 .fx5vig{background:radial-gradient(ellipse at 50% 48%,transparent 62%,rgba(110,24,52,.18) 100%) !important}
+  #p2 .ctr .pg::before{inset:-3cqw -5.5cqw !important;border-radius:50% !important;background:radial-gradient(closest-side,rgba(255,238,244,.82) 44%,rgba(255,238,244,.4) 74%,rgba(255,238,244,0) 100%) !important}
+  #p2 .ctr .pg .w{color:#5a1226 !important;-webkit-text-fill-color:#5a1226 !important;text-shadow:0 0 .4cqw rgba(255,255,255,.9) !important}
+  #p2 .ctr .dots i{background:rgba(122,31,53,.3) !important}
+  #p2 .ctr .dots i.on{background:#7a1f35 !important}
+  #p2 .ctr .hint{color:rgba(122,31,53,.8) !important}
 </style>
 </head>
 <body>
@@ -793,6 +804,20 @@ document.addEventListener('touchend',function(ev){var n=Date.now();if(n-lastTap<
   p.style.setProperty('--ff',cs.fontFamily);
   p.style.setProperty('--fst',cs.fontStyle);
   p.style.setProperty('--fw',cs.fontWeight);
+})();
+</script>
+<script>
+(function(){
+  var p=document.getElementById('p2'); if(!p)return;
+  var keep=['bgl','fx5vig','ctr','fl','fx3vig'];
+  function clean(){
+    for(var i=0;i<p.children.length;i++){
+      var c=p.children[i],ok=false;
+      for(var j=0;j<keep.length;j++)if(c.classList.contains(keep[j]))ok=true;
+      if(!ok)c.style.setProperty('display','none','important');
+    }
+  }
+  clean(); setTimeout(clean,500); setTimeout(clean,2500);
 })();
 </script>
 </body>
