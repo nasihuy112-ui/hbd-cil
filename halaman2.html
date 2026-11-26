@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Surat untuk Vika</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500;1,600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-text-size-adjust:none}
 html,body{height:100%;overflow:hidden;background:#f8e9ec;font-family:'Playfair Display',Georgia,serif}
@@ -47,10 +47,13 @@ html,body{height:100%;overflow:hidden;background:#f8e9ec;font-family:'Playfair D
 #surat.ada{transform:translate3d(-50%,0,0);pointer-events:auto}
 #bingkai{position:absolute;left:-6vh;top:-6vh;width:calc(100% + 12vh);height:calc(100% + 12vh);pointer-events:none}
 #surat.polos{background:#fff7f9;border:2px solid #efb3c2;border-radius:5vh}
-#gulung{position:absolute;inset:3.2vh 2.4vh;overflow-y:auto;overscroll-behavior:contain;padding:2vh 4.5vw 10vh;touch-action:pan-y;scrollbar-width:none}
+#gulung{position:absolute;inset:3.2vh 2.4vh;overflow-y:auto;overscroll-behavior:contain;padding:3vh 3vw 10vh;touch-action:pan-y;scrollbar-width:none}
 #gulung::-webkit-scrollbar{display:none}
-#isi{color:#4a0f1f;font:700 5.1vh/1.65 'Nunito',system-ui,sans-serif}
-#isi p{margin-bottom:3.4vh}
+#isi{color:#5c1229;font:italic 500 5vh/1.75 'Lora',Georgia,serif;text-align:center;letter-spacing:.01em}
+#isi p{margin-bottom:2.6vh}
+#isi p::after{content:'\2661';display:block;margin-top:2.6vh;color:#d9829a;font-style:normal;font-size:4vh;opacity:.75}
+#isi p:last-child::after{display:none}
+.baris{display:block;text-wrap:balance}
 #judul{display:block;width:100%;height:auto;margin:0 0 3vh}
 .h{display:inline-block;opacity:0;transform:translate3d(0,1.4vh,0);transition:opacity .55s ease-out,transform .55s ease-out}
 .h.on{opacity:1;transform:none}
@@ -99,12 +102,12 @@ var NEXT_URL = ''; // isi nanti: 'halaman3.html'
 var SURAT = [
 'SELAMAT ULANG TAHUN SAYANGGG KUUU❤️❤️',
 'maaf ya, aku telat ngucapinnya.',
-'aku mau bilang makasih, kamu udah kuat sejauh ini, tahun ini ga gampang, banyak masalah yang kamu lewatin, tapi kamu tetap berusaha jalanin semuanya, i\'m so proud of you, makasih juga udah sabar ngadepin aku dan masih mau bertahan.',
-'aku minta maaf soal kesalahan aku, waktu kita cuma ada di malam hari, tapi karena aku sibuk kerja dan suka ketiduran pas pulang, komunikasi kita jadi berantakan, maaf udah bikin kamu nunggu dan kecewa, kamu tetap penting buat aku, dan aku mau belajar lebih baik.',
-'di umur yang baru ini, aku doain kamu selalu sehat dan dilindungi Allah. Semoga hati kamu lebih tenang, masalah kamu dimudahkan, rezeki kamu dilancarkan, dan apa yang kamu impikan bisa menjadi kenyataan. Semoga kamu juga lebih banyak bahagianya ya sayangg❤️',
-'buat kita, semoga bisa makin saling ngerti, komunikasinya makin baik, dan hubungan kita dijaga. Insyaallah Januari 2027 nanti aku mau ketemu kamu. Semoga Allah lancarkan jalannya. Aamiin.',
-'sekali lagi, selamat ulang tahun ya sayangg, i love you ❤️',
-'kadonya nyusul ya, aku baru pesan di Shopee, jadi belum bisa nyampe hari ini, maaf yaa sayanggg😭'
+'aku mau bilang makasih, kamu udah kuat sejauh ini,|tahun ini ga gampang,|banyak masalah yang kamu lewatin,|tapi kamu tetap berusaha jalanin semuanya,|i\'m so proud of you,|makasih juga udah sabar ngadepin aku|dan masih mau bertahan.',
+'aku minta maaf soal kesalahan aku,|waktu kita cuma ada di malam hari,|tapi karena aku sibuk kerja|dan suka ketiduran pas pulang,|komunikasi kita jadi berantakan,|maaf udah bikin kamu nunggu dan kecewa,|kamu tetap penting buat aku,|dan aku mau belajar lebih baik.',
+'di umur yang baru ini,|aku doain kamu selalu sehat dan dilindungi Allah.|Semoga hati kamu lebih tenang,|masalah kamu dimudahkan, rezeki kamu dilancarkan,|dan apa yang kamu impikan bisa menjadi kenyataan.|Semoga kamu juga lebih banyak bahagianya ya sayangg❤️',
+'buat kita, semoga bisa makin saling ngerti,|komunikasinya makin baik, dan hubungan kita dijaga.|Insyaallah Januari 2027 nanti aku mau ketemu kamu.|Semoga Allah lancarkan jalannya. Aamiin.',
+'sekali lagi, selamat ulang tahun ya sayangg,|i love you ❤️',
+'kadonya nyusul ya, aku baru pesan di Shopee,|jadi belum bisa nyampe hari ini,|maaf yaa sayanggg😭'
 ];
 
 function $(id){return document.getElementById(id);}
@@ -366,11 +369,15 @@ function ikuti(el){ // geser sesekali pakai scroll halus bawaan HP
   var g=gulung.getBoundingClientRect(), r=el.getBoundingClientRect();
   if(r.bottom>g.top+g.height*.82)gulung.scrollBy({top:r.bottom-(g.top+g.height*.55),behavior:'smooth'});
 }
-function siapkan(teks){ // kata disusun dulu (tersembunyi) supaya baris tidak loncat
+function siapkan(teks){ // baris & kata disusun dulu (tersembunyi) supaya tidak loncat
   var p=document.createElement('p'), daftar=[];
-  teks.split(' ').forEach(function(kata,i){
-    if(i)p.appendChild(document.createTextNode(' '));
-    var h=document.createElement('span');h.className='h';h.textContent=kata;p.appendChild(h);daftar.push(h);
+  teks.split('|').forEach(function(frasa){
+    var b=document.createElement('span');b.className='baris';
+    frasa.split(' ').forEach(function(kata,i){
+      if(i)b.appendChild(document.createTextNode(' '));
+      var h=document.createElement('span');h.className='h';h.textContent=kata;b.appendChild(h);daftar.push(h);
+    });
+    p.appendChild(b);
   });
   $('isi').appendChild(p);
   return daftar;
